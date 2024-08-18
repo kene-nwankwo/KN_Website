@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Navbar from './NavBar';
+import "./styles.css"
+import { Route, Routes } from "react-router-dom"
+import Home from './pages/Home';
+import Resume from './pages/Resume';
+import SoftwareProjects from './pages/SoftwareProjects';
+import Wikler from './pages/Wikler';
+import FIRE from './pages/FIRE';
+import IB_Lab from './pages/IB_Lab';
+import Error from './pages/Error';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Navbar />
+      <div className="container">
+        <Routes >
+          <Route path="/" element={<Home />} />
+          <Route path="/Home" element={<Home />} />
+          <Route path="/Resume" element={<Resume />} />
+          <Route path="/SoftwareProjects" element={<SoftwareProjects />} />
+          <Route path="/Wikler" element={<Wikler />} />
+          <Route path="/FIRE" element={<FIRE />} />
+          <Route path="/IB_Lab" element={<IB_Lab />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
+        </div>
+    </>
+  )
+  
 }
 
 export default App;
