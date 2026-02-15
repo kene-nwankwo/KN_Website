@@ -34,8 +34,7 @@ function HomeBody(){
     return (
         <>
         <h2>About Me:</h2>
-        <a>I am a student at the University of Maryland, studying Computer Science, Finance, and International Business. This is my website where you can learn a little more about me and gain a better understanding of the work I've done and the projects I'm working on!</a><br/>
-        <a>I grew up in Bethesda, Maryland, and attended <a href="https://www2.montgomeryschoolsmd.org/schools/wjhs/" target="_blank" rel="noreferrer">Walter Johnson High School </a>. Currently, I am completing my undergraduate degrees at the <a href="https://www.umd.edu/" target="_blank" rel="noreferrer">University of Maryland</a>.</a>
+        <a>I recently graduated from the University of Maryland with degrees in Computer Science, Finance, and International Business. I completed an internship as a Summer Analyst at Goldman Sachs, and I'm passionate about leveraging my skills in software development and finance. This website showcases my background, work, and ongoing projects. Feel free to explore and connect with me to learn more!</a><br/>
   <br/>
   <img src={KeneHeadShot} className='image' alt="Head shot of Kenenna Nwankwo"/>
   <br/>

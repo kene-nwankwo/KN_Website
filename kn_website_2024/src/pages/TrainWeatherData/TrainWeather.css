@@ -1,0 +1,23 @@
+.train-weather-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.train-weather-item {
+  flex: 1 1 30%;
+  min-width: 280px;
+}
+
+/* Stack on narrow displays (tablets and below) */
+@media (max-width: 768px) {
+  .train-weather-container {
+    flex-direction: column;
+  }
+  
+  .train-weather-item {
+    width: 100%;
+    flex: 1 1 100%;
+  }
+}

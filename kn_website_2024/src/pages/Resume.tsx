@@ -1,7 +1,9 @@
-import Button from '@mui/material/Button/Button';
+import { Button } from '@mui/material';
 import { Link, useMatch, useResolvedPath } from "react-router-dom"
 import React, { Component } from 'react';
 import resumePdf from '../Files/kResume.pdf';
+
+import CShell from '../Project PDFS/C/project6.pdf';
 
 export default function Home(){
     return (
@@ -48,6 +50,8 @@ function ResumeBody(){
         <>
         <Skills />
         <hr/>
+        <HighLighted />
+        <hr/>
         <Projects />
         <hr/>
         <EmploymentExperience />
@@ -57,12 +61,61 @@ function ResumeBody(){
     )
 }
 
+
 function Skills(){
   return (
     <>
     <h3 className='section_name'>Skills</h3>
-    <h5 className='section_title_h3_h4_h5'>Python, Java, JavaScript, ReactJS, C/C++, OCaml, Pandas, Stata, HTML, MS Suite, Google Suite, AVR Assembly</h5>
+    <h5 className='section_title_h3_h4_h5'>Python, Java, JavaScript, ReactJS, C/C++, OCaml, Pandas, Stata, HTML, MS Suite, Google Suite, AVR Assembly, Git</h5>
     </>
+  )
+}
+
+function HighLighted(){
+  return (
+      <>
+      <h3 className='section_name'>Highlighted Experiences</h3>
+
+      <a className='section_title_h3_h4_h5' href="https://www.goldmansachs.com/" target="_blank" rel="noreferrer"><h4 className='section_title_h3_h4_h5'>Goldman Sachs - Dallas, TX</h4></a>
+      <h5 className='section_title_h3_h4_h5'>Summer Analyst - June – August 2024</h5>
+      <ul className='section_ul'>
+        <li>Automated daily tasks for teams using Python and Microsoft Windows API, streamlining processes by parsing data with Pandas and automatically drafting emails, increasing efficiency and accuracy saving approximately three hours per week.</li>
+        <li>Built a data analysis tool using Python and Pandas, forecasting bond settlement times, enhancing decision-making efficiency.</li>
+        <li>Collaborated with trading desks and external clients to ensure judicious handling of $130 billion in daily trading volumes.</li>
+      </ul>
+
+      <h4 className='section_title_h3_h4_h5'>Online Multiplayer Minesweeper</h4>
+
+      <h5 className='section_title_h3_h4_h5'>Java</h5>
+      <ul className='section_ul'>
+        <li>Developed a Minesweeper game with a Java Swing GUI, featuring a unique scoring system, and custom game options.</li>
+        <li>Implemented multiplayer functionality using Java Sockets and Threads and created a custom communication protocol to minimize processing time, ensuring seamless real-time gameplay for competitors online.</li>
+      </ul>
+
+      <h4 className='section_title_h3_h4_h5'>Campus Educators - College Park, MD</h4>
+      <h5 className='section_title_h3_h4_h5'>Software Engineer - March – July 2024</h5>
+      <ul className='section_ul'>
+        <li>Spearheaded front-end development of user-friendly and responsive web interfaces for a student-run startup, specializing in connecting students with tutors from their university and local area</li>
+        <li>Collaborated closely with cross-functional teams to translate business requirements into technical solutions, leveraging my background in finance to inform key strategic initiatives ensuring alignment with organizational goals and objectives</li>
+      </ul>
+    
+      <a className='section_title_h3_h4_h5' href="https://www.owenscorning.com/en-us" target="_blank" rel="noreferrer"><h4 className='section_title_h3_h4_h5'>Owens Corning - Toledo, OH</h4></a>
+      <h5 className='section_title_h3_h4_h5'>Corporate Finance Intern – Economics Dep. - May – August 2023</h5>
+      <ul className='section_ul'>
+        <li>Develop a comprehensive predictive model using Python and Stata to accurately a forecast $500 million market segment</li>
+        <li>Utilize statistical analysis techniques and market research to identify key variables that influence market trends and demand</li>
+        <li>Provide insights and actionable recommendations based on forecast, contributing to the teams strategic planning</li>
+        <li>Collaborate with cross-functional teams incorporating feedback, to enhance the accuracy and robustness of the forecasts</li>
+      </ul>
+
+      <h4 className='section_title_h3_h4_h5'>Programming Language Compiler</h4>
+
+      <h5 className='section_title_h3_h4_h5'>Racket</h5>
+      <ul className='section_ul'>
+      <li>Developed a specialized computer language as a subset of the programming language Racket, focusing on functional programming, efficiency, functions, exception handling, data types, pattern matching, lambda expressions</li>
+      <li>Implemented the compiler, enabling conversion of Racket input into x86 machine code for execution on computer systems</li>
+      </ul>
+      </>
   )
 }
 
@@ -70,6 +123,14 @@ function Projects(){
   return (
     <>
     <h3 className='section_name'><a href="./SoftwareProjects">Projects</a></h3>
+
+    <h4 className='section_title_h3_h4_h5'>Online Multiplayer Minesweeper</h4>
+
+    <h5 className='section_title_h3_h4_h5'>Java</h5>
+    <ul className='section_ul'>
+    <li>Developed a Minesweeper game with a Java Swing GUI, featuring a unique scoring system, and custom game options.</li>
+    <li>Implemented multiplayer functionality using Java Sockets and Threads and created a custom communication protocol to minimize processing time, ensuring seamless real-time gameplay for competitors online.</li>
+    </ul>
 
     <h4 className='section_title_h3_h4_h5'>Programming Language Compiler</h4>
 
@@ -95,16 +156,7 @@ function Projects(){
     <li>Demonstrated expertise in AWS by deploying the website using Amazon S3 for static content hosting</li>
     </ul>
 
-    <h4 className='section_title_h3_h4_h5'>Maze Solving Algorithm</h4>
-
-    <h5 className='section_title_h3_h4_h5'>Java, Graphs, Weighted Graphs, HashMaps, Depth-First-Search, Breadth-First-Search, Dijsktra's Algorithm</h5>
-    <ul className='section_ul'>
-    <li>Implemented 3 algorithms to solve a randomized maze. Depth-First, Breadth-First, and Dijsktra's Algorithm</li>
-    <li>Implemented a Weighted Graph Data Structure to hold and model the contents of the maze and traverse its vertices</li>
-    <li>Used nested hashMaps to Implement the Weighted graph data structure</li>
-    </ul>
-
-    <h4 className='section_title_h3_h4_h5'>C Shell</h4>
+    <a className='section_title_h3_h4_h5' href={CShell} target="_blank" rel="noreferrer"><h4 className='section_title_h3_h4_h5'>C Shell</h4></a>
 
     <h5 className='section_title_h3_h4_h5'>C, Pipe, Fork, Dup2, exec functions Makefile</h5>
     <ul className='section_ul'>
@@ -125,9 +177,11 @@ function EmploymentExperience(){
     <h3 className='section_name' >Employment/Experience</h3>
 
     <a className='section_title_h3_h4_h5' href="https://www.goldmansachs.com/" target="_blank" rel="noreferrer"><h4 className='section_title_h3_h4_h5'>Goldman Sachs - Dallas, TX</h4></a>
-    <h5 className='section_title_h3_h4_h5'>Incoming Operations Analyst Intern - June – August 2024</h5>
+    <h5 className='section_title_h3_h4_h5'>Summer Analyst - June – August 2024</h5>
     <ul className='section_ul'>
-      <li>Operations analyst within the Global Banking and Markets Division, specializing in Fixed Income, Currencies, and Commodities (FICC) as well as Equities operations, starting in the summer of 2024</li>
+      <li>Automated daily tasks for teams using Python and Microsoft Windows API, streamlining processes by parsing data with Pandas and automatically drafting emails, increasing efficiency and accuracy saving approximately three hours per week.</li>
+      <li>Built a data analysis tool using Python and Pandas, forecasting bond settlement times, enhancing decision-making efficiency.</li>
+      <li>Collaborated with trading desks and external clients to ensure judicious handling of $130 billion in daily trading volumes.</li>
     </ul>
     
     <h4 className='section_title_h3_h4_h5'>Campus Educators - College Park, MD</h4>
@@ -217,7 +271,7 @@ function ActivitiesAffiliations(){
     <h3 className='section_name'>Activities/Affiliations</h3>
 
     <a className='section_title_h3_h4_h5' href="https://css.umd.edu/" target="_blank" rel="noreferrer"><h4 className='section_title_h3_h4_h5'>College Success Scholars - College Park, MD</h4></a>
-    <h5 className='section_title_h3_h4_h5'>Member - July 2018 – Present</h5>
+    <h5 className='section_title_h3_h4_h5'>Member - July 2018 – January 2024</h5>
       <ul className='section_ul'>
         <li>Identified key questions and issues; social, political, and cultural across communities in the United States</li>
         <li>Learned how diversity is inherently a part of the university atmosphere and how to value self and other perspectives</li>

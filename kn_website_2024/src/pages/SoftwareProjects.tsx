@@ -37,7 +37,15 @@ export default function Home(){
 function HighLighted(){
     return (
         <>
-        <h3 className='section_name'>Highlighted</h3>
+        <h3 className='section_name'>Highlighted Projects</h3>
+
+        <h4 className='section_title_h3_h4_h5'>Online Multiplayer Minesweeper</h4>
+
+        <h5 className='section_title_h3_h4_h5'>Java</h5>
+        <ul className='section_ul'>
+        <li>Developed a Minesweeper game with a Java Swing GUI, featuring a unique scoring system, and custom game options.</li>
+        <li>Implemented multiplayer functionality using Java Sockets and Threads and created a custom communication protocol to minimize processing time, ensuring seamless real-time gameplay for competitors online.</li>
+        </ul>
 
         <h4 className='section_title_h3_h4_h5'>Programming Language Compiler</h4>
 
@@ -61,15 +69,6 @@ function HighLighted(){
         <ul className='section_ul'>
         <li>Developed a personal website using ReactJS, showcasing strong proficiency in front-end development and responsive design</li>
         <li>Demonstrated expertise in AWS by deploying the website using Amazon S3 for static content hosting</li>
-        </ul>
-
-        <a className='section_title_h3_h4_h5' href={Maze} target="_blank" rel="noreferrer"><h4 className='section_title_h3_h4_h5'>Maze Solving Algorithm</h4></a>
-
-        <h5 className='section_title_h3_h4_h5'>Java, Graphs, Weighted Graphs, HashMaps, Depth-First-Search, Breadth-First-Search, Dijsktra's Algorithm</h5>
-        <ul className='section_ul'>
-        <li>Implemented 3 algorithms to solve a randomized maze. Depth-First, Breadth-First, and Dijsktra's Algorithm</li>
-        <li>Implemented a Weighted Graph Data Structure to hold and model the contents of the maze and traverse its vertices</li>
-        <li>Used nested hashMaps to Implement the Weighted graph data structure</li>
         </ul>
 
         <a className='section_title_h3_h4_h5' href={CShell} target="_blank" rel="noreferrer"><h4 className='section_title_h3_h4_h5'>C Shell</h4></a>
