@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import TestWeatherJson from "./testWeatherData.json"
+import TestWeatherJson from "./data/testWeatherData.json"
 
 type MinuteForecast = {
   dt: number;     // Unix timestamp

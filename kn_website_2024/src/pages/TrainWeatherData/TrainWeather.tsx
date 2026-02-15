@@ -1,6 +1,6 @@
 import MinutelyForecast from './WeatherChart';
 import TrainData from './TrainData';
-import './TrainWeather.css';
+import './styles/TrainWeather.css';
 
 export default function TrainWeather() {
   return (<div>
