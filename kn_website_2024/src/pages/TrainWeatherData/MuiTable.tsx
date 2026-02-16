@@ -15,6 +15,17 @@ type MuiTableProps<T> = {
   data: T[];
 };
 
+const getCellColor = <T extends object>(row: T, lowMinutes: number, highMinutes: number, inputColor: string, currentColor: string): string => {
+  const departureTimeEpochSeconds = Number(row['departureTimeEpochSeconds' as keyof T]);
+  const currentTimeEpochSeconds = Math.floor(Date.now() / 1000);
+  
+  if (departureTimeEpochSeconds >= (currentTimeEpochSeconds + (60 * lowMinutes)) && 
+      departureTimeEpochSeconds <= (currentTimeEpochSeconds + (60 * highMinutes))) {
+    return inputColor;
+  }
+  return currentColor;
+};
+
 export default function MuiTable<T extends object>({
   title,
   columns,
@@ -54,11 +65,16 @@ export default function MuiTable<T extends object>({
           ) : (
             data.map((row, i) => (
               <TableRow key={i} hover>
-                {columns.map(col => (
-                  <TableCell key={String(col.accessor)}>
-                    {String(row[col.accessor])}
-                  </TableCell>
-                ))}
+                {columns.map(col => {
+                  let cellColor = "inherit";
+                  cellColor = getCellColor(row, 6, 16, "#FFD580", cellColor);
+                  cellColor = getCellColor(row, 8, 12, "lightGreen", cellColor);
+                  return (
+                    <TableCell key={String(col.accessor)} sx={{ backgroundColor: cellColor }}>
+                      {String(row[col.accessor])}
+                    </TableCell>
+                  );
+                })}
               </TableRow>
             ))
           )}

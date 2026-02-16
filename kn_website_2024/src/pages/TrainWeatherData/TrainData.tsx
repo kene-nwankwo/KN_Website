@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MuiTable from "./MuiTable";
+import departures1 from "./data/testdepartures1.json";
+import departures2 from "./data/testdepartures2.json";
 
 type Column<T> = {
   header: string;
@@ -10,11 +12,8 @@ type TrainDataProps = {
     destination: string;
 };
 
-const defaultTrainDataProps: TrainDataProps = {
-    origin: "Lovers Lane Station, Dallas, TX",
-    destination: "Pearl/Arts District Station, Dallas, TX",
-};
-
+let backEndURL = "https://demobackend-production-3f3f.up.railway.app/map";
+//let backEndURL = "http://localhost:8080/map"
 
 type Departure = {
     departureTime: string;
@@ -34,9 +33,8 @@ const columns: Column<Departure>[] = [
   { header: "Summary", accessor: "summary" },
 ];
 
-export default function TrainData({ origin = defaultTrainDataProps.origin, destination = defaultTrainDataProps.destination }: TrainDataProps) {
+export default function TrainData({ origin, destination }: TrainDataProps) {
     const [departures, setDepartures] = useState<Departure[]>([]);
-    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const fetchDepartures = async () => {
@@ -44,11 +42,28 @@ export default function TrainData({ origin = defaultTrainDataProps.origin, desti
             let searchTime: number = now;
             const searchWindowMinutes = 45;
 
-            const isBeforeWindow = (searchTimeSec: number, nowSec: number, windowMin: number) =>
-                searchTimeSec < nowSec + windowMin * 60;
+            // Determine backEndURL based on environment
+            backEndURL = process.env.NODE_ENV === 'development'
+                ? "http://localhost:8080/map"
+                : backEndURL;
+            // Use test data in development
+            const useTestData = true;
+            if (useTestData && process.env.NODE_ENV === 'development') {
+                if (origin === "Lovers Lane Station, Dallas, TX"){
+                    setDepartures(departures1);
+                    return;
+                } else {
+                    setDepartures(departures2);
+                    return;
+                }
+            }
+
+            const isBeforeWindow = (searchTimeSec: number, timeNowSec: number, windowMin: number) =>
+                searchTimeSec < timeNowSec + (windowMin * 60);
 
             while (isBeforeWindow(searchTime, now, searchWindowMinutes)) {
-                const url = `https://demobackend-production-3f3f.up.railway.app/api/v1/test?originStation=${encodeURIComponent(origin)}&destinationStation=${encodeURIComponent(destination)}&departureTime=${encodeURIComponent(searchTime)}`;
+
+                const url = `${backEndURL}?originStation=${encodeURIComponent(origin)}&destinationStation=${encodeURIComponent(destination)}&departureTime=${encodeURIComponent(searchTime)}`;
                 
                 console.log("Fetching from URL:", url);
 
@@ -74,15 +89,10 @@ export default function TrainData({ origin = defaultTrainDataProps.origin, desti
                 }
             }
 
-            setLoading(false);
         };
 
         fetchDepartures();
     }, [origin, destination]);
-
-    if (loading) {
-        return <div>Loading train departures...</div>;
-    }
 
     return (
         <div>
