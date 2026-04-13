@@ -12,25 +12,26 @@ type TrainDataProps = {
     destination: string;
 };
 
-let backEndURL = "https://demobackend-production-3f3f.up.railway.app/map";
-//let backEndURL = "http://localhost:8080/map"
+// Testing Settings
+let backEndURL = "https://demobackend-production-3f3f.up.railway.app/mapsData";
+const useTestData = false;
 
 type Departure = {
     departureTime: string;
     departureTimeEpochSeconds: number;
     arrivalTime: string;
-    summary: string;
+    line: string;
 };
 type DepartureForTable = {
   departureTime: string;
   arrivalTime: string;
-  summary: string;
+  line: string;
 };
 
 const columns: Column<Departure>[] = [
   { header: "Departure", accessor: "departureTime" },
   { header: "Arrival", accessor: "arrivalTime" },
-  { header: "Summary", accessor: "summary" },
+  { header: "Line", accessor: "line" },
 ];
 
 export default function TrainData({ origin, destination }: TrainDataProps) {
@@ -44,10 +45,9 @@ export default function TrainData({ origin, destination }: TrainDataProps) {
 
             // Determine backEndURL based on environment
             backEndURL = process.env.NODE_ENV === 'development'
-                ? "http://localhost:8080/map"
+                ? "http://localhost:8080/mapsData"
                 : backEndURL;
             // Use test data in development
-            const useTestData = true;
             if (useTestData && process.env.NODE_ENV === 'development') {
                 if (origin === "Lovers Lane Station, Dallas, TX"){
                     setDepartures(departures1);
@@ -63,7 +63,7 @@ export default function TrainData({ origin, destination }: TrainDataProps) {
 
             while (isBeforeWindow(searchTime, now, searchWindowMinutes)) {
 
-                const url = `${backEndURL}?originStation=${encodeURIComponent(origin)}&destinationStation=${encodeURIComponent(destination)}&departureTime=${encodeURIComponent(searchTime)}`;
+                const url = `${backEndURL}?origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}&departureTime=${encodeURIComponent(searchTime)}`;
                 
                 console.log("Fetching from URL:", url);
 
@@ -76,7 +76,7 @@ export default function TrainData({ origin, destination }: TrainDataProps) {
                         departureTime: leg.departure_time?.text || "N/A",
                         departureTimeEpochSeconds: leg.departure_time?.value || 0,
                         arrivalTime: leg.arrival_time?.text || "N/A",
-                        summary: leg.steps.map((step: any) => step.html_instructions).join(", "),
+                        line: leg.steps.map((step: any) => step.transit_details?.line?.name).find((name: string | undefined) => name !== undefined) || "N/A",
                     }));
 
                     setDepartures(prev => [...prev, ...departs]);

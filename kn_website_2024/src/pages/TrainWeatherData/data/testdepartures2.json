@@ -3,84 +3,84 @@
         "departureTime": "1:40 PM",
         "departureTimeEpochSeconds": 1771184400,
         "arrivalTime": "1:51 PM",
-        "summary": "Walk to Pearl/Arts District Station, Light rail towards N - Red Line - Parker Road"
+        "line": "Red Line"
     },
     {
         "departureTime": "1:40 PM",
         "departureTimeEpochSeconds": 1771184400,
         "arrivalTime": "1:51 PM",
-        "summary": "Walk to Pearl/Arts District Station, Light rail towards N - Red Line - Parker Road"
+        "line": "Red Line"
     },
     {
         "departureTime": "1:50 PM",
         "departureTimeEpochSeconds": 1771185000,
         "arrivalTime": "1:59 PM",
-        "summary": "Walk to Pearl/Arts District Station, Light rail towards E - Orange Line - LBJ / Central"
+        "line": "Orange Line"
     },
     {
         "departureTime": "1:50 PM",
         "departureTimeEpochSeconds": 1771185000,
         "arrivalTime": "1:59 PM",
-        "summary": "Walk to Pearl/Arts District Station, Light rail towards E - Orange Line - LBJ / Central"
+        "line": "Orange Line"
     },
     {
         "departureTime": "2:00 PM",
         "departureTimeEpochSeconds": 1771185600,
         "arrivalTime": "2:08 PM",
-        "summary": "Walk to Pearl/Arts District Station, Light rail towards N - Red Line - Parker Road"
+        "line": "Red Line"
     },
     {
         "departureTime": "2:00 PM",
         "departureTimeEpochSeconds": 1771185600,
         "arrivalTime": "2:08 PM",
-        "summary": "Walk to Pearl/Arts District Station, Light rail towards N - Red Line - Parker Road"
+        "line": "Red Line"
     },
     {
         "departureTime": "2:10 PM",
         "departureTimeEpochSeconds": 1771186200,
         "arrivalTime": "2:20 PM",
-        "summary": "Walk to Pearl/Arts District Station, Light rail towards E - Orange Line - LBJ / Central"
+        "line": "Orange Line"
     },
     {
         "departureTime": "2:10 PM",
         "departureTimeEpochSeconds": 1771186200,
         "arrivalTime": "2:20 PM",
-        "summary": "Walk to Pearl/Arts District Station, Light rail towards E - Orange Line - LBJ / Central"
+        "line": "Orange Line"
     },
     {
         "departureTime": "2:18 PM",
         "departureTimeEpochSeconds": 1771186711,
         "arrivalTime": "2:27 PM",
-        "summary": "Walk to Pearl/Arts District Station, Light rail towards N - Red Line - Parker Road"
+        "line": "Red Line"
     },
     {
         "departureTime": "2:18 PM",
         "departureTimeEpochSeconds": 1771186711,
         "arrivalTime": "2:27 PM",
-        "summary": "Walk to Pearl/Arts District Station, Light rail towards N - Red Line - Parker Road"
+        "line": "Red Line"
     },
     {
         "departureTime": "2:20 PM",
         "departureTimeEpochSeconds": 1771186800,
         "arrivalTime": "2:29 PM",
-        "summary": "Walk to Pearl/Arts District Station, Light rail towards N - Red Line - Parker Road"
+        "line": "Red Line"
     },
     {
         "departureTime": "2:20 PM",
         "departureTimeEpochSeconds": 1771186800,
         "arrivalTime": "2:29 PM",
-        "summary": "Walk to Pearl/Arts District Station, Light rail towards N - Red Line - Parker Road"
+        "line": "Red Line"
     },
     {
         "departureTime": "2:30 PM",
         "departureTimeEpochSeconds": 1771187400,
         "arrivalTime": "2:39 PM",
-        "summary": "Walk to Pearl/Arts District Station, Light rail towards E - Orange Line - LBJ / Central"
+        "line": "Orange Line"
     },
     {
         "departureTime": "2:30 PM",
         "departureTimeEpochSeconds": 1771187400,
         "arrivalTime": "2:39 PM",
-        "summary": "Walk to Pearl/Arts District Station, Light rail towards E - Orange Line - LBJ / Central"
+        "line": "Orange Line"
     }
 ]

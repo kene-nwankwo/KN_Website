@@ -13,11 +13,11 @@ export async function fetchWeatherData(): Promise<MinuteForecast[]> {
   
   // Determine backEndURL based on environment
   backEndURL = process.env.NODE_ENV === 'development'
-    ? "http://localhost:8080/weather"
+    ? "http://localhost:8080/weatherData"
     : backEndURL;
   
   // Use test data in development
-  const useTestData = true;
+  const useTestData = false;
   
   if (useTestData && process.env.NODE_ENV === 'development') {
     return TestWeatherJson.minutely || [];
