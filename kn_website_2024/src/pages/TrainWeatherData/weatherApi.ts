@@ -9,7 +9,7 @@ export async function fetchWeatherData(): Promise<MinuteForecast[]> {
   const lat = 32.7767; // Dallas
   const lon = -96.7970;
   
-  let backEndURL = "https://demobackend-production-3f3f.up.railway.app/weather";
+  let backEndURL = "https://demobackend-production-3f3f.up.railway.app/weatherData";
   
   // Determine backEndURL based on environment
   backEndURL = process.env.NODE_ENV === 'development'
