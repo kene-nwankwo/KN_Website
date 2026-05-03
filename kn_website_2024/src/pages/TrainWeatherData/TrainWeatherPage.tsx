@@ -1,8 +1,8 @@
 import MinutelyForecast from './WeatherChart';
 import TrainData from './TrainData';
-import './TrainWeather.css';
+import './styles/TrainWeather.css';
 
-export default function TrainWeather() {
+export default function TrainWeatherPage() {
   return (<div>
     <div className="train-weather-container">
       <div className="train-weather-item"><TrainData origin="Lovers Lane Station, Dallas, TX" destination="Pearl/Arts District Station, Dallas, TX" /></div>

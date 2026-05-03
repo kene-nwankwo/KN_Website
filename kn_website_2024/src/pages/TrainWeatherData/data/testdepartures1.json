@@ -1,0 +1,56 @@
+[
+    {
+        "departureTime": "1:45 PM",
+        "departureTimeEpochSeconds": 1771184700,
+        "arrivalTime": "1:54 PM",
+        "line": "Orange Line"
+    },
+    {
+        "departureTime": "1:45 PM",
+        "departureTimeEpochSeconds": 1771184700,
+        "arrivalTime": "1:54 PM",
+        "line": "Orange Line"
+    },
+    {
+        "departureTime": "1:55 PM",
+        "departureTimeEpochSeconds": 1771185300,
+        "arrivalTime": "2:05 PM",
+        "line": "Red Line"
+    },
+    {
+        "departureTime": "1:55 PM",
+        "departureTimeEpochSeconds": 1771185300,
+        "arrivalTime": "2:05 PM",
+        "line": "Red Line"
+    },
+    {
+        "departureTime": "2:05 PM",
+        "departureTimeEpochSeconds": 1771185900,
+        "arrivalTime": "2:14 PM",
+        "line": "Orange Line"
+    },
+    {
+        "departureTime": "2:05 PM",
+        "departureTimeEpochSeconds": 1771185900,
+        "arrivalTime": "2:14 PM",
+        "line": "Orange Line"
+    },
+    {
+        "departureTime": "2:15 PM",
+        "departureTimeEpochSeconds": 1771186500,
+        "arrivalTime": "2:25 PM",
+        "line": "Red Line"
+    },
+    {
+        "departureTime": "2:25 PM",
+        "departureTimeEpochSeconds": 1771187100,
+        "arrivalTime": "2:35 PM",
+        "line": "Orange Line"
+    },
+    {
+        "departureTime": "2:15 PM",
+        "departureTimeEpochSeconds": 1771186500,
+        "arrivalTime": "2:25 PM",
+        "line": "Red Line"
+    }
+]

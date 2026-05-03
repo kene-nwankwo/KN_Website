@@ -8,7 +8,7 @@ import Wikler from './pages/Wikler';
 import FIRE from './pages/FIRE';
 import IB_Lab from './pages/IB_Lab';
 import Error from './pages/Error';
-import TrainWeather from './pages/TrainWeatherData/TrainWeather';
+import TrainWeatherPage from './pages/TrainWeatherData/TrainWeatherPage';
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
           <Route path="/Wikler" element={<Wikler />} />
           <Route path="/FIRE" element={<FIRE />} />
           <Route path="/IB_Lab" element={<IB_Lab />} />
-          <Route path="/TrainWeather" element={<TrainWeather />} />
+          <Route path="/trainweatherpage" element={<TrainWeatherPage />} />
           <Route path="*" element={<Error />} />
         </Routes>
         </div>
