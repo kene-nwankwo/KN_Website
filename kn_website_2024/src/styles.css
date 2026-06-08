@@ -3,17 +3,17 @@
 }
 
 
-  a:link {
+    .site-content a:link {
      /* Styles for unvisited links */
-    color: #294C60;
+        color: var(--color-primary);
   }
-  a:visited {
+    .site-content a:visited {
     /* Styles for visited links */
-    color: #3c81a8;
+        color: var(--color-link-visited);
   }
-  a:link:hover {
+    .site-content a:hover {
     /*Styles for links on hover */
-    color: #3c81a8;
+        color: var(--color-link-visited);
   }
 
   @import url('https://fonts.googleapis.com/css2?family=Mate:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
@@ -21,7 +21,7 @@
   
 body {
     margin: 0;
-    background-color: #faf5e7;
+    background-color: var(--color-bg);
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
@@ -34,29 +34,29 @@ body {
     width: 20%;
     height: 20%;
     /*border: .3rem solid #294C60;  Color of border around the image */
-    margin: 2rem;
+    margin: var(--space-4);
 }
 
 .container {
-    margin: 1rem;
+    margin: var(--space-3);
     text-align: center
 }
 
 .nav {
-    background-color: #294C60;
-    color: white;
+    background-color: var(--color-primary);
+    color: var(--color-white);
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-    gap: 2rem;
-    padding: 0 1rem;
+    gap: var(--space-4);
+    padding: 0 var(--space-3);
 }
 .nav ul {
     padding: 0;
     margin: 0;
     list-style: none;
     display: flex;
-    gap: 1rem;
+    gap: var(--space-3);
 }
 
 .site-title {
@@ -69,47 +69,44 @@ body {
     height: 100%;
     display: flex;
     align-items: center;
-    padding: .25rem;
+    padding: var(--space-1);
 }
 
-.nav Button {
-    color: #FFEFD3;
+.nav .nav-button {
+    color: var(--color-cream);
 }
 
-.nav Button.active {
-    background-color: #001B2E;
+.nav .nav-button.active {
+    background-color: var(--color-primary-dark);
 }
 
-.nav Button:hover {
-    background-color: #ADB6C4;
+.nav .nav-button:hover {
+    background-color: var(--color-muted);
 }
 
-.section_name {
+.section-name {
     text-align: left;
     margin: 0rem;
-    margin-bottom: .75rem;
+    margin-bottom: var(--space-2-5);
     border: 0rem;
     padding: 0rem;
 }
-.section_title_h3_h4_h5 {
+.section-heading {
     text-align: left;
     margin: 0rem;
     border: 0rem;
     padding: 0rem;
 }
-.section_ul {
-    margin: .75rem;
+.section-list {
+    margin: var(--space-2-5);
     margin-top: 0rem;
     border: 1rem;
-    padding: .25rem;
+    padding: var(--space-1);
     text-align: left;
     list-style-type: square;
     list-style-position: inside;
 }
-.section_li {
-    text-align: left;
-}
-.imbedded_pdf{
+.embedded-pdf{
     width: 100%;
     height: 600px;
 }

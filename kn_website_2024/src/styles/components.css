@@ -1,0 +1,5 @@
+/*
+  Temporary bridge so existing styles continue to load while we split
+  src/styles.css across tokens/base/layout/components.
+*/
+@import '../styles.css';

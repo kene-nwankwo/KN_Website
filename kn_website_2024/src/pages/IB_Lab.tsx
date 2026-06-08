@@ -12,7 +12,7 @@ export default function IB_Lab(){
         <h2>International Business Agility Lab</h2>
 
         <div>
-        <embed src={IB_Lab_PDf} type="application/pdf" className='imbedded_pdf' />
+        <embed src={IB_Lab_PDf} type="application/pdf" className='embedded-pdf' />
         </div>
 
         <a href={IB_Lab_PDf} target="_blank" rel="noreferrer"><h4>Final Presentation</h4></a>

@@ -9,7 +9,7 @@ export default function Wikler(){
         <h2>Wikler Case Competition</h2>
 
         <div>
-        <embed src={FinalPres} type="application/pdf" className='imbedded_pdf'/>
+        <embed src={FinalPres} type="application/pdf" className='embedded-pdf'/>
         </div>
 
         <a href={FinalPres} target="_blank" rel="noreferrer"><h4>Final Presentation</h4></a>

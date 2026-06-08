@@ -5,7 +5,7 @@ export default function Navbar() {
     const path = window.location.pathname
 
     return <nav className="nav">
-        <Button><Link to='/' className="site-title">Kene Nwankwo</Link></Button>
+        <Button className="nav-button"><Link to='/' className="site-title">Kene Nwankwo</Link></Button>
         <ul>
             <CustomLink to="/home">Home</CustomLink>
             <CustomLink to="/Resume">Resume</CustomLink>
@@ -19,7 +19,7 @@ function CustomLink({ to, children, ...props }: {to:any, children:any}) {
     const resolvedPath = useResolvedPath(to)
     const isActive = useMatch({ path: resolvedPath.pathname , end: true})
     return(
-        <Button className={isActive ? "active" : ""}>
+        <Button className={isActive ? "nav-button active" : "nav-button"}>
             <Link to={to} {...props}>{children}</Link>
         </Button>
     )
