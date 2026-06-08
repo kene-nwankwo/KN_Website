@@ -1,6 +1,4 @@
 import { Button } from '@mui/material';
-import { Link, useMatch, useResolvedPath } from "react-router-dom"
-import React, { Component } from 'react';
 import resumePdf from '../Files/kResume.pdf';
 
 import CShell from '../Project PDFS/C/project6.pdf';
@@ -16,17 +14,6 @@ export default function Home(){
     </div>
     )
 }
-
-// function CustomLink({ to, children, ...props }: {to:any, children:any}) {
-//   const resolvedPath = useResolvedPath(to)
-//   const isActive = useMatch({ path: resolvedPath.pathname , end: true})
-//   return(
-//       <Button className={isActive ? "active" : ""}>
-//           <Link to={to} {...props}>{children}</Link>
-//       </Button>
-//   )
-// }
-
 
 function ResumeHead(){
     return (

@@ -2,8 +2,6 @@ import { Link, useMatch, useResolvedPath } from "react-router-dom"
 import { Button } from "@mui/material"
 
 export default function Navbar() {
-    const path = window.location.pathname
-
     return <nav className="nav">
         <Button className="nav-button"><Link to='/' className="site-title">Kene Nwankwo</Link></Button>
         <ul>
@@ -15,7 +13,12 @@ export default function Navbar() {
 }
 
 
-function CustomLink({ to, children, ...props }: {to:any, children:any}) {
+type CustomLinkProps = {
+    to: string;
+    children: React.ReactNode;
+};
+
+function CustomLink({ to, children, ...props }: CustomLinkProps) {
     const resolvedPath = useResolvedPath(to)
     const isActive = useMatch({ path: resolvedPath.pathname , end: true})
     return(

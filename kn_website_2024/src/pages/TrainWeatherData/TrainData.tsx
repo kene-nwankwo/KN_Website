@@ -13,7 +13,7 @@ type TrainDataProps = {
 };
 
 // Testing Settings
-let backEndURL = "https://demobackend-production-3f3f.up.railway.app/mapsData";
+const PRODUCTION_BACKEND_URL = "https://demobackend-production-3f3f.up.railway.app/mapsData";
 const useTestData = false;
 
 type Departure = {
@@ -22,10 +22,37 @@ type Departure = {
     arrivalTime: string;
     line: string;
 };
-type DepartureForTable = {
-  departureTime: string;
-  arrivalTime: string;
-  line: string;
+
+type TransitLine = {
+    name?: string;
+};
+
+type TransitDetails = {
+    line?: TransitLine;
+};
+
+type TransitStep = {
+    transit_details?: TransitDetails;
+};
+
+type RouteLeg = {
+    departure_time?: {
+        text?: string;
+        value?: number;
+    };
+    arrival_time?: {
+        text?: string;
+        value?: number;
+    };
+    steps?: TransitStep[];
+};
+
+type MapsRoute = {
+    legs?: RouteLeg[];
+};
+
+type MapsResponse = {
+    routes?: MapsRoute[];
 };
 
 const columns: Column<Departure>[] = [
@@ -38,15 +65,14 @@ export default function TrainData({ origin, destination }: TrainDataProps) {
     const [departures, setDepartures] = useState<Departure[]>([]);
 
     useEffect(() => {
-        const fetchDepartures = async () => {
+        const loadDeparturesWithinWindow = async () => {
             const now = Math.floor(Date.now() / 1000);
-            let searchTime: number = now;
+            let searchTimeSec = now;
             const searchWindowMinutes = 45;
-
-            // Determine backEndURL based on environment
-            backEndURL = process.env.NODE_ENV === 'development'
+            const backendUrl = process.env.NODE_ENV === 'development'
                 ? "http://localhost:8080/mapsData"
-                : backEndURL;
+                : PRODUCTION_BACKEND_URL;
+
             // Use test data in development
             if (useTestData && process.env.NODE_ENV === 'development') {
                 if (origin === "Lovers Lane Station, Dallas, TX"){
@@ -58,32 +84,32 @@ export default function TrainData({ origin, destination }: TrainDataProps) {
                 }
             }
 
-            const isBeforeWindow = (searchTimeSec: number, timeNowSec: number, windowMin: number) =>
+            const isWithinSearchWindow = (searchTimeSec: number, timeNowSec: number, windowMin: number) =>
                 searchTimeSec < timeNowSec + (windowMin * 60);
 
-            while (isBeforeWindow(searchTime, now, searchWindowMinutes)) {
+            while (isWithinSearchWindow(searchTimeSec, now, searchWindowMinutes)) {
 
-                const url = `${backEndURL}?origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}&departureTime=${encodeURIComponent(searchTime)}`;
+                const url = `${backendUrl}?origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}&departureTime=${encodeURIComponent(searchTimeSec)}`;
                 
                 console.log("Fetching from URL:", url);
 
                 const response = await fetch(url);
-                const data = await response.json();            
+                const mapsResponse: MapsResponse = await response.json();            
 
-                if (data.routes && data.routes.length > 0) {
-                    const legs = data.routes[0].legs;
-                    const departs: Departure[] = legs.map((leg: any) => ({
+                if (mapsResponse.routes && mapsResponse.routes.length > 0) {
+                    const routeLegs = mapsResponse.routes[0].legs ?? [];
+                    const newDepartures: Departure[] = routeLegs.map((leg: RouteLeg) => ({
                         departureTime: leg.departure_time?.text || "N/A",
                         departureTimeEpochSeconds: leg.departure_time?.value || 0,
                         arrivalTime: leg.arrival_time?.text || "N/A",
-                        line: leg.steps.map((step: any) => step.transit_details?.line?.name).find((name: string | undefined) => name !== undefined) || "N/A",
+                        line: leg.steps?.map((step: TransitStep) => step.transit_details?.line?.name).find((name: string | undefined) => name !== undefined) || "N/A",
                     }));
 
-                    setDepartures(prev => [...prev, ...departs]);
+                    setDepartures(prev => [...prev, ...newDepartures]);
 
-                    const lastDeparture = departs[departs.length - 1];
-                    searchTime = lastDeparture.departureTimeEpochSeconds + 60;
-                    console.log("Updated search time (epoch seconds):", searchTime);
+                    const lastDeparture = newDepartures[newDepartures.length - 1];
+                    searchTimeSec = lastDeparture.departureTimeEpochSeconds + 60;
+                    console.log("Updated search time (epoch seconds):", searchTimeSec);
                 } else {
                     break; // stop if no routes returned
                 }
@@ -91,7 +117,7 @@ export default function TrainData({ origin, destination }: TrainDataProps) {
 
         };
 
-        fetchDepartures();
+        loadDeparturesWithinWindow();
     }, [origin, destination]);
 
     return (

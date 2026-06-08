@@ -34,7 +34,7 @@ function HomeBody(){
     return (
         <>
         <h2>About Me:</h2>
-        <a>I recently graduated from the University of Maryland with degrees in Computer Science, Finance, and International Business. I completed an internship as a Summer Analyst at Goldman Sachs, and I'm passionate about leveraging my skills in software development and finance. This website showcases my background, work, and ongoing projects. Feel free to explore and connect with me to learn more!</a><br/>
+        <p>I recently graduated from the University of Maryland with degrees in Computer Science, Finance, and International Business. I completed an internship as a Summer Analyst at Goldman Sachs, and I'm passionate about leveraging my skills in software development and finance. This website showcases my background, work, and ongoing projects. Feel free to explore and connect with me to learn more!</p><br/>
   <br/>
   <img src={KeneHeadShot} className='image' alt="Head shot of Kenenna Nwankwo"/>
   <br/>
