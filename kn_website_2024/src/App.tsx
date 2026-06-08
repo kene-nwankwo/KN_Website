@@ -1,12 +1,12 @@
 import Navbar from './NavBar';
 import { Route, Routes } from "react-router-dom"
-import Home from './pages/Home';
-import Resume from './pages/Resume';
-import SoftwareProjects from './pages/SoftwareProjects';
-import Wikler from './pages/Wikler';
-import FIRE from './pages/FIRE';
-import IBLab from './pages/IB_Lab';
-import Error from './pages/Error';
+import Home from './pages/home/Home';
+import Resume from './pages/resume/Resume';
+import SoftwareProjects from './pages/software-projects/SoftwareProjects';
+import Wikler from './pages/wikler/Wikler';
+import FIRE from './pages/fire/FIRE';
+import IBLab from './pages/ib-lab/IB_Lab';
+import Error from './pages/error/Error';
 import TrainWeatherPage from './pages/TrainWeatherData/TrainWeatherPage';
 
 function App() {

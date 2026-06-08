@@ -1,8 +1,8 @@
-import IB_Lab_PDf from '../Files/IB Lab/International Business Agility Lab Team 3 Presentation.pdf';
-import TeamPhoto from '../Files/IB Lab/Group 3 Team Photo.png';
-import Entrep_FINAL_PDF from '../Files/IB Lab/AgilityLab_Entrepreneurship_FINAL.pdf';
-import Migrap_Bios_PDF from '../Files/IB Lab/Migrapreneur Bios.pdf';
-import Case_PDF from '../Files/IB Lab/Migrapreneur Case - final.pdf';
+import IB_Lab_PDf from '../../Files/IB Lab/International Business Agility Lab Team 3 Presentation.pdf';
+import TeamPhoto from '../../Files/IB Lab/Group 3 Team Photo.png';
+import Entrep_FINAL_PDF from '../../Files/IB Lab/AgilityLab_Entrepreneurship_FINAL.pdf';
+import Migrap_Bios_PDF from '../../Files/IB Lab/Migrapreneur Bios.pdf';
+import Case_PDF from '../../Files/IB Lab/Migrapreneur Case - final.pdf';
 
 
 

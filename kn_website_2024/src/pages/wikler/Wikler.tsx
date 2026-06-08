@@ -1,6 +1,6 @@
-import FinalPres from '../Files/Wikler Case/Wikler Case Final Presentation.pdf';
-import Case from '../Files/Wikler Case/Vassiliko_case.pdf';
-import Rule from '../Files/Wikler Case/Case Competition Rules 21.pdf';
+import FinalPres from '../../Files/Wikler Case/Wikler Case Final Presentation.pdf';
+import Case from '../../Files/Wikler Case/Vassiliko_case.pdf';
+import Rule from '../../Files/Wikler Case/Case Competition Rules 21.pdf';
 
 
 export default function Wikler(){

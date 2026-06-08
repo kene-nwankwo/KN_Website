@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
-import resumePdf from '../Files/kResume.pdf';
+import resumePdf from '../../Files/kResume.pdf';
 
-import CShell from '../Project PDFS/C/project6.pdf';
+import CShell from '../../Project PDFS/C/project6.pdf';
 
 export default function Home(){
     return (

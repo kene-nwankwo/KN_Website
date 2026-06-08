@@ -1,22 +1,22 @@
-import Maze from '../Project PDFS/Java Projects/132 Projects/CMSC 132 Project 7.pdf';
-import ClearCell from '../Project PDFS/Java Projects/132 Projects/CMSC 132 Project 3.pdf';
-import BlackJack from '../Project PDFS/Java Projects/132 Projects/Blackjack Game Project.pdf';
-import LinkedList from '../Project PDFS/Java Projects/132 Projects/Data Structure Projects/CMSC 132 Proj4 LinkedList.pdf';
-import HashTable from '../Project PDFS/Java Projects/132 Projects/Data Structure Projects/CMSC 132 Project 5.pdf';
-import BiTree from '../Project PDFS/Java Projects/132 Projects/Data Structure Projects/CMSC 132 Project 6.pdf';
-import HeavyBag from '../Project PDFS/Java Projects/132 Projects/Data Structure Projects/CMSC 132_ Heavy Bag Project 8.pdf';
-import DiagramSys from '../Project PDFS/Java Projects/131 Projects/Project 7.pdf';
-import MediaRental from '../Project PDFS/Java Projects/131 Projects/Project 8.pdf';
+import Maze from '../../Project PDFS/Java Projects/132 Projects/CMSC 132 Project 7.pdf';
+import ClearCell from '../../Project PDFS/Java Projects/132 Projects/CMSC 132 Project 3.pdf';
+import BlackJack from '../../Project PDFS/Java Projects/132 Projects/Blackjack Game Project.pdf';
+import LinkedList from '../../Project PDFS/Java Projects/132 Projects/Data Structure Projects/CMSC 132 Proj4 LinkedList.pdf';
+import HashTable from '../../Project PDFS/Java Projects/132 Projects/Data Structure Projects/CMSC 132 Project 5.pdf';
+import BiTree from '../../Project PDFS/Java Projects/132 Projects/Data Structure Projects/CMSC 132 Project 6.pdf';
+import HeavyBag from '../../Project PDFS/Java Projects/132 Projects/Data Structure Projects/CMSC 132_ Heavy Bag Project 8.pdf';
+import DiagramSys from '../../Project PDFS/Java Projects/131 Projects/Project 7.pdf';
+import MediaRental from '../../Project PDFS/Java Projects/131 Projects/Project 8.pdf';
 
-import Treads from '../Project PDFS/C/threads.pdf';
-import CShell from '../Project PDFS/C/project6.pdf';
-import Calendar from '../Project PDFS/C/project4.pdf';
-import DocManager from '../Project PDFS/C/project2.pdf';
-import UserInter from '../Project PDFS/C/project3.pdf';
-import GradesCalc from '../Project PDFS/C/project1.pdf';
+import Treads from '../../Project PDFS/C/threads.pdf';
+import CShell from '../../Project PDFS/C/project6.pdf';
+import Calendar from '../../Project PDFS/C/project4.pdf';
+import DocManager from '../../Project PDFS/C/project2.pdf';
+import UserInter from '../../Project PDFS/C/project3.pdf';
+import GradesCalc from '../../Project PDFS/C/project1.pdf';
 
-import AssemP1 from '../Project PDFS/Assembly/assembly_exercise_1.pdf';
-import AssemP2 from '../Project PDFS/Assembly/project5.pdf';
+import AssemP1 from '../../Project PDFS/Assembly/assembly_exercise_1.pdf';
+import AssemP2 from '../../Project PDFS/Assembly/project5.pdf';
 
 export default function Home(){
     return (

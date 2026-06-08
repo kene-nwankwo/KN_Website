@@ -1,4 +1,4 @@
-import FirePDf from '../Files/FIRE/FIRE_Final Research Project Report.pdf';
+import FirePDf from '../../Files/FIRE/FIRE_Final Research Project Report.pdf';
 
 export default function Fire(){
     return (

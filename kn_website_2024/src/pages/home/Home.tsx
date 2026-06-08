@@ -1,4 +1,4 @@
-import KeneHeadShot from '../Files/kenePhoto.jpg';
+import KeneHeadShot from '../../Files/kenePhoto.jpg';
 
 export default function Home(){
     return (
