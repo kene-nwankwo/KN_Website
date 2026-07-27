@@ -1,11 +1,6 @@
-* {
-    box-sizing: border-box;
-}
-
-
     .site-content a:link {
      /* Styles for unvisited links */
-        color: var(--color-primary);
+        color: var(--color-link);
   }
     .site-content a:visited {
     /* Styles for visited links */
@@ -13,20 +8,8 @@
   }
     .site-content a:hover {
     /*Styles for links on hover */
-        color: var(--color-link-visited);
+        color: var(--color-link-hover);
   }
-
-  @import url('https://fonts.googleapis.com/css2?family=Mate:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
-  
-body {
-    margin: 0;
-    background-color: var(--color-bg);
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 300;
-    font-style: normal;
-}
 
 
 .image {
@@ -82,6 +65,62 @@ body {
 
 .nav .nav-button:hover {
     background-color: var(--color-muted);
+}
+
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.theme-toggle-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.theme-toggle-track {
+    position: relative;
+    display: inline-block;
+    width: 2.75rem;
+    height: 1.5rem;
+    background-color: var(--color-muted);
+    border-radius: 999px;
+    transition: background-color 0.2s ease;
+}
+
+.theme-toggle-input:checked + .theme-toggle-track {
+    background-color: var(--color-primary);
+}
+
+.theme-toggle-thumb {
+    position: absolute;
+    top: 0.1875rem;
+    left: 0.1875rem;
+    width: 1.125rem;
+    height: 1.125rem;
+    background-color: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.theme-toggle-input:checked + .theme-toggle-track .theme-toggle-thumb {
+    transform: translateX(1.25rem);
+}
+
+.theme-toggle-input:focus-visible + .theme-toggle-track {
+    outline: 2px solid var(--color-cream);
+    outline-offset: 2px;
+}
+
+.theme-toggle-thumb-icon {
+    font-size: 0.8rem !important;
+    color: var(--color-primary-dark);
+    pointer-events: none;
 }
 
 .section-name {

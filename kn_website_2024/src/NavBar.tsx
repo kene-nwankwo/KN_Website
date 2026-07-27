@@ -1,7 +1,16 @@
 import { Link, useMatch, useResolvedPath } from "react-router-dom"
 import { Button } from "@mui/material"
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import type { ReactNode } from 'react';
+import type { ThemeMode } from './theme';
 
-export default function Navbar() {
+type NavbarProps = {
+    themeMode: ThemeMode;
+    onThemeModeChange: (themeMode: ThemeMode) => void;
+};
+
+export default function Navbar({ themeMode, onThemeModeChange }: NavbarProps) {
     return <nav className="nav">
         <Button className="nav-button"><Link to='/' className="site-title">Kene Nwankwo</Link></Button>
         <ul>
@@ -9,13 +18,28 @@ export default function Navbar() {
             <CustomLink to="/Resume">Resume</CustomLink>
             <CustomLink to="/SoftwareProjects">Software Projects</CustomLink>
         </ul>
+        <label className="theme-toggle" aria-label="Toggle dark mode">
+            <input
+                type="checkbox"
+                className="theme-toggle-input"
+                checked={themeMode === 'dark'}
+                onChange={(e) => onThemeModeChange(e.target.checked ? 'dark' : 'light')}
+            />
+            <span className="theme-toggle-track">
+                <span className="theme-toggle-thumb">
+                    {themeMode === 'dark'
+                        ? <LightModeIcon className="theme-toggle-thumb-icon" />
+                        : <DarkModeIcon className="theme-toggle-thumb-icon" />}
+                </span>
+            </span>
+        </label>
     </nav>
 }
 
 
 type CustomLinkProps = {
     to: string;
-    children: React.ReactNode;
+    children: ReactNode;
 };
 
 function CustomLink({ to, children, ...props }: CustomLinkProps) {
