@@ -1,41 +1,13 @@
 {
   "files": {
-    "main.css": "./static/css/main.1abfa9c7.css",
-    "main.js": "./static/js/main.ec1fbd11.js",
-    "static/media/Wikler Case Final Presentation.pdf": "./static/media/Wikler Case Final Presentation.1731f5210f3759661195.pdf",
-    "static/media/kenePhoto.jpg": "./static/media/kenePhoto.0c8b920ea3737de5a592.jpg",
-    "static/media/Group 3 Team Photo.png": "./static/media/Group 3 Team Photo.d1d4d837adee59c86dcb.png",
-    "static/media/Vassiliko_case.pdf": "./static/media/Vassiliko_case.742a9a35a87c254b4a18.pdf",
-    "static/media/project3.pdf": "./static/media/project3.c9903ef244def57bd043.pdf",
-    "static/media/project2.pdf": "./static/media/project2.ea235dcbc26f49612652.pdf",
-    "static/media/project4.pdf": "./static/media/project4.d44802bc776077619210.pdf",
-    "static/media/International Business Agility Lab Team 3 Presentation.pdf": "./static/media/International Business Agility Lab Team 3 Presentation.7f68f8b4e87d4bc7c48f.pdf",
-    "static/media/Blackjack Game Project.pdf": "./static/media/Blackjack Game Project.416f474d785d24e362c1.pdf",
-    "static/media/project1.pdf": "./static/media/project1.3bba3ed87e7461afa531.pdf",
-    "static/media/AgilityLab_Entrepreneurship_FINAL.pdf": "./static/media/AgilityLab_Entrepreneurship_FINAL.336b5b60ab306d9e0f70.pdf",
-    "static/media/FIRE_Final Research Project Report.pdf": "./static/media/FIRE_Final Research Project Report.b47296e2d479b872f44a.pdf",
-    "static/media/Migrapreneur Case - final.pdf": "./static/media/Migrapreneur Case - final.4307bf8e6c33a860f36e.pdf",
-    "static/media/Migrapreneur Bios.pdf": "./static/media/Migrapreneur Bios.326d7196769874ccf485.pdf",
-    "static/media/CMSC 132 Proj4 LinkedList.pdf": "./static/media/CMSC 132 Proj4 LinkedList.eb641daf42f2ad937805.pdf",
-    "static/media/project6.pdf": "./static/media/project6.dcb07a132f5443d76c73.pdf",
-    "static/media/Project 8.pdf": "./static/media/Project 8.ea997924b677af2f71cc.pdf",
-    "static/media/CMSC 132 Project 5.pdf": "./static/media/CMSC 132 Project 5.b79c0af889f9d9b80ef1.pdf",
-    "static/media/CMSC 132 Project 6.pdf": "./static/media/CMSC 132 Project 6.fe1ba5cd84040f7d89bb.pdf",
-    "static/media/Project 7.pdf": "./static/media/Project 7.57ce02e642734a6f28fe.pdf",
-    "static/media/CMSC 132 Project 3.pdf": "./static/media/CMSC 132 Project 3.2734c47fe431db57a8dd.pdf",
-    "static/media/CMSC 132 Project 7.pdf": "./static/media/CMSC 132 Project 7.e2bc77c9ca30f0403cb5.pdf",
-    "static/media/project5.pdf": "./static/media/project5.b9982fed7d20118f684e.pdf",
-    "static/media/threads.pdf": "./static/media/threads.419510cbcd22aeafd405.pdf",
-    "static/media/kResume.pdf": "./static/media/kResume.5b00f76b24d7d3cbac8c.pdf",
-    "static/media/assembly_exercise_1.pdf": "./static/media/assembly_exercise_1.104875deb9c8718421ae.pdf",
-    "static/media/CMSC 132_ Heavy Bag Project 8.pdf": "./static/media/CMSC 132_ Heavy Bag Project 8.6bee776883013a80d4b2.pdf",
-    "static/media/Case Competition Rules 21.pdf": "./static/media/Case Competition Rules 21.42eaa8658df706086e98.pdf",
+    "main.css": "./static/css/main.d87089f0.css",
+    "main.js": "./static/js/main.71221253.js",
     "index.html": "./index.html",
-    "main.1abfa9c7.css.map": "./static/css/main.1abfa9c7.css.map",
-    "main.ec1fbd11.js.map": "./static/js/main.ec1fbd11.js.map"
+    "main.d87089f0.css.map": "./static/css/main.d87089f0.css.map",
+    "main.71221253.js.map": "./static/js/main.71221253.js.map"
   },
   "entrypoints": [
-    "static/css/main.1abfa9c7.css",
-    "static/js/main.ec1fbd11.js"
+    "static/css/main.d87089f0.css",
+    "static/js/main.71221253.js"
   ]
 }
