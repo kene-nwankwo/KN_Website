@@ -1,1 +1,103 @@
-/* Layout styles will be introduced in later cleanup steps. */
+.container {
+	margin: var(--space-3);
+	text-align: center
+}
+
+.nav {
+	background-color: var(--color-primary);
+	color: var(--color-white);
+	display: flex;
+	justify-content: space-between;
+	align-items: stretch;
+	gap: var(--space-4);
+	padding: 0 var(--space-3);
+}
+
+.nav ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	display: flex;
+	gap: var(--space-3);
+}
+
+.site-title {
+	font-size: 1.4rem;
+}
+
+.nav a {
+	color: inherit;
+	text-decoration: none;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	padding: var(--space-1);
+}
+
+.nav .nav-button {
+	color: var(--color-cream);
+}
+
+.nav .nav-button.active {
+	background-color: var(--color-primary-dark);
+}
+
+.nav .nav-button:hover {
+	background-color: var(--color-muted);
+}
+
+.theme-toggle {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.theme-toggle-input {
+	position: absolute;
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.theme-toggle-track {
+	position: relative;
+	display: inline-block;
+	width: 2.75rem;
+	height: 1.5rem;
+	background-color: var(--color-muted);
+	border-radius: 999px;
+	transition: background-color 0.2s ease;
+}
+
+.theme-toggle-input:checked + .theme-toggle-track {
+	background-color: var(--color-primary);
+}
+
+.theme-toggle-thumb {
+	position: absolute;
+	top: 0.1875rem;
+	left: 0.1875rem;
+	width: 1.125rem;
+	height: 1.125rem;
+	background-color: var(--color-white);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: transform 0.2s ease;
+}
+
+.theme-toggle-input:checked + .theme-toggle-track .theme-toggle-thumb {
+	transform: translateX(1.25rem);
+}
+
+.theme-toggle-input:focus-visible + .theme-toggle-track {
+	outline: 2px solid var(--color-cream);
+	outline-offset: 2px;
+}
+
+.theme-toggle-thumb-icon {
+	font-size: 0.8rem !important;
+	color: var(--color-primary-dark);
+	pointer-events: none;
+}
