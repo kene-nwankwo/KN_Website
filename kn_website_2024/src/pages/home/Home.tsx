@@ -1,4 +1,4 @@
-import KeneHeadShot from '../../Files/kenePhoto.jpg';
+const KENE_HEADSHOT_URL = '/Files/kenePhoto.jpg';
 
 export default function Home(){
     return (
@@ -36,7 +36,7 @@ function HomeBody(){
         <h2>About Me:</h2>
         <p>I recently graduated from the University of Maryland with degrees in Computer Science, Finance, and International Business. I completed an internship as a Summer Analyst at Goldman Sachs, and I'm passionate about leveraging my skills in software development and finance. This website showcases my background, work, and ongoing projects. Feel free to explore and connect with me to learn more!</p><br/>
   <br/>
-  <img src={KeneHeadShot} className='image' alt="Head shot of Kenenna Nwankwo"/>
+    <img src={KENE_HEADSHOT_URL} className='image' alt="Head shot of Kenenna Nwankwo"/>
   <br/>
         </>
     )

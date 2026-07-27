@@ -1,22 +1,22 @@
-import Maze from '../../Project PDFS/Java Projects/132 Projects/CMSC 132 Project 7.pdf';
-import ClearCell from '../../Project PDFS/Java Projects/132 Projects/CMSC 132 Project 3.pdf';
-import BlackJack from '../../Project PDFS/Java Projects/132 Projects/Blackjack Game Project.pdf';
-import LinkedList from '../../Project PDFS/Java Projects/132 Projects/Data Structure Projects/CMSC 132 Proj4 LinkedList.pdf';
-import HashTable from '../../Project PDFS/Java Projects/132 Projects/Data Structure Projects/CMSC 132 Project 5.pdf';
-import BiTree from '../../Project PDFS/Java Projects/132 Projects/Data Structure Projects/CMSC 132 Project 6.pdf';
-import HeavyBag from '../../Project PDFS/Java Projects/132 Projects/Data Structure Projects/CMSC 132_ Heavy Bag Project 8.pdf';
-import DiagramSys from '../../Project PDFS/Java Projects/131 Projects/Project 7.pdf';
-import MediaRental from '../../Project PDFS/Java Projects/131 Projects/Project 8.pdf';
+const MAZE_PDF_URL = '/Project%20PDFS/Java%20Projects/132%20Projects/CMSC%20132%20Project%207.pdf';
+const CLEAR_CELL_PDF_URL = '/Project%20PDFS/Java%20Projects/132%20Projects/CMSC%20132%20Project%203.pdf';
+const BLACKJACK_PDF_URL = '/Project%20PDFS/Java%20Projects/132%20Projects/Blackjack%20Game%20Project.pdf';
+const LINKED_LIST_PDF_URL = '/Project%20PDFS/Java%20Projects/132%20Projects/Data%20Structure%20Projects/CMSC%20132%20Proj4%20LinkedList.pdf';
+const HASH_TABLE_PDF_URL = '/Project%20PDFS/Java%20Projects/132%20Projects/Data%20Structure%20Projects/CMSC%20132%20Project%205.pdf';
+const BINARY_TREE_PDF_URL = '/Project%20PDFS/Java%20Projects/132%20Projects/Data%20Structure%20Projects/CMSC%20132%20Project%206.pdf';
+const HEAVY_BAG_PDF_URL = '/Project%20PDFS/Java%20Projects/132%20Projects/Data%20Structure%20Projects/CMSC%20132_%20Heavy%20Bag%20Project%208.pdf';
+const DIAGRAM_SYSTEM_PDF_URL = '/Project%20PDFS/Java%20Projects/131%20Projects/Project%207.pdf';
+const MEDIA_RENTAL_PDF_URL = '/Project%20PDFS/Java%20Projects/131%20Projects/Project%208.pdf';
 
-import Treads from '../../Project PDFS/C/threads.pdf';
-import CShell from '../../Project PDFS/C/project6.pdf';
-import Calendar from '../../Project PDFS/C/project4.pdf';
-import DocManager from '../../Project PDFS/C/project2.pdf';
-import UserInter from '../../Project PDFS/C/project3.pdf';
-import GradesCalc from '../../Project PDFS/C/project1.pdf';
+const THREADS_PDF_URL = '/Project%20PDFS/C/threads.pdf';
+const C_SHELL_PDF_URL = '/Project%20PDFS/C/project6.pdf';
+const CALENDAR_PDF_URL = '/Project%20PDFS/C/project4.pdf';
+const DOCUMENT_MANAGER_PDF_URL = '/Project%20PDFS/C/project2.pdf';
+const USER_INTERFACE_PDF_URL = '/Project%20PDFS/C/project3.pdf';
+const GRADES_CALCULATOR_PDF_URL = '/Project%20PDFS/C/project1.pdf';
 
-import AssemP1 from '../../Project PDFS/Assembly/assembly_exercise_1.pdf';
-import AssemP2 from '../../Project PDFS/Assembly/project5.pdf';
+const ASSEMBLY_PROJECT_1_PDF_URL = '/Project%20PDFS/Assembly/assembly_exercise_1.pdf';
+const ASSEMBLY_PROJECT_2_PDF_URL = '/Project%20PDFS/Assembly/project5.pdf';
 
 export default function Home(){
     return (
@@ -71,7 +71,7 @@ function HighLighted(){
         <li>Demonstrated expertise in AWS by deploying the website using Amazon S3 for static content hosting</li>
         </ul>
 
-        <a className='section-heading' href={CShell} target="_blank" rel="noreferrer"><h4 className='section-heading'>C Shell</h4></a>
+        <a className='section-heading' href={C_SHELL_PDF_URL} target="_blank" rel="noreferrer"><h4 className='section-heading'>C Shell</h4></a>
 
         <h5 className='section-heading'>C, Pipe, Fork, Dup2, exec functions Makefile</h5>
         <ul className='section-list'>
@@ -96,7 +96,7 @@ function Java(){
         <li>Used structures to create an efficient algorithm to store nearest cell towers to cell users on a 2-dimensional plane as users and towers are added and removed. Developed an efficient algorithm to find the optimal location to place future cell towers</li>
         </ul>
 
-        <a className='section-heading' href={Maze} target="_blank" rel="noreferrer"><h4 className='section-heading'>Maze Solving Algorithm</h4></a>
+        <a className='section-heading' href={MAZE_PDF_URL} target="_blank" rel="noreferrer"><h4 className='section-heading'>Maze Solving Algorithm</h4></a>
 
         <h5 className='section-heading'>Graphs, Weighted Graphs, HashMaps, Depth-First-Search, Breadth-First-Search, Dijsktra's Algorithm</h5>
         <ul className='section-list'>
@@ -105,7 +105,7 @@ function Java(){
         <li>Used nested hashMaps to Implement the Weighted graph data structure</li>
         </ul>
 
-        <a className='section-heading' href={ClearCell} target="_blank" rel="noreferrer"><h4 className='section-heading'>Clear Cell Game</h4></a>
+        <a className='section-heading' href={CLEAR_CELL_PDF_URL} target="_blank" rel="noreferrer"><h4 className='section-heading'>Clear Cell Game</h4></a>
 
         <h5 className='section-heading'>Enumerated type, abstract class, 2D Array Manipulation</h5>
         <ul className='section-list'>
@@ -116,7 +116,7 @@ function Java(){
 
         </ul>
 
-        <a href={BlackJack} target="_blank" rel="noreferrer"><h4 className='section-heading'>Black Jack Game</h4></a>
+        <a href={BLACKJACK_PDF_URL} target="_blank" rel="noreferrer"><h4 className='section-heading'>Black Jack Game</h4></a>
 
         <h5 className='section-heading'>ArrayList, Enumerated types</h5>
         <ul className='section-list'>
@@ -129,13 +129,13 @@ function Java(){
 
         <h5 className='section-heading'>Created several Data structures from the ground up, including additional useful methods</h5>
         <ul className='section-list'>
-        <a href={LinkedList} target="_blank" rel="noreferrer"><li>LinkedList</li></a>
-        <a href={HashTable} target="_blank" rel="noreferrer"><li>HashTable</li></a>
-        <a href={BiTree} target="_blank" rel="noreferrer"><li>Binary Search Tree Map</li></a>
-        <a href={HeavyBag} target="_blank" rel="noreferrer"><li>Heavy Bag</li></a>
+        <a href={LINKED_LIST_PDF_URL} target="_blank" rel="noreferrer"><li>LinkedList</li></a>
+        <a href={HASH_TABLE_PDF_URL} target="_blank" rel="noreferrer"><li>HashTable</li></a>
+        <a href={BINARY_TREE_PDF_URL} target="_blank" rel="noreferrer"><li>Binary Search Tree Map</li></a>
+        <a href={HEAVY_BAG_PDF_URL} target="_blank" rel="noreferrer"><li>Heavy Bag</li></a>
         </ul>
 
-        <a className='section-heading' href={DiagramSys} target="_blank" rel="noreferrer"><h4 className='section-heading'>Diagram System</h4></a>
+        <a className='section-heading' href={DIAGRAM_SYSTEM_PDF_URL} target="_blank" rel="noreferrer"><h4 className='section-heading'>Diagram System</h4></a>
 
         <h5 className='section-heading'>2D Arrays, Array manipulation, Inheritance, GUI</h5>
         <ul className='section-list'>
@@ -143,7 +143,7 @@ function Java(){
         <li>Calculate the next animation step on a 2D Array for the next frame in GUI</li>
         </ul>
 
-        <a className='section-heading' href={MediaRental} target="_blank" rel="noreferrer"><h4 className='section-heading'>Media Rental Manager</h4></a>
+        <a className='section-heading' href={MEDIA_RENTAL_PDF_URL} target="_blank" rel="noreferrer"><h4 className='section-heading'>Media Rental Manager</h4></a>
 
         <h5 className='section-heading'>Classes, Interfaces, Polymorphism</h5>
         <ul className='section-list'>
@@ -170,7 +170,7 @@ function CLanguage(){
         <li>Demonstrated proficiency in parallel computing techniques, including task decomposition, workload distribution, and synchronization, to maximize computational throughput and minimize load imbalances</li>
         </ul>
 
-        <a className='section-heading' href={Treads} target="_blank" rel="noreferrer"><h4 className='section-heading'>Threads</h4></a>
+        <a className='section-heading' href={THREADS_PDF_URL} target="_blank" rel="noreferrer"><h4 className='section-heading'>Threads</h4></a>
 
         <h5 className='section-heading'>Threads, Pipe, Fork, Dup2, Randomization, Command Line Arguments, Dynamic Memory Allocation, Program timing</h5>
         <ul className='section-list'>
@@ -179,7 +179,7 @@ function CLanguage(){
         <li>Compared the times it took to perform the operations with different numbers of threads. Graphed the times to the number of threads used in the process to find the optimal number of threads to complete the operations the most efficiently</li>
         </ul>
 
-        <a className='section-heading' href={CShell} target="_blank" rel="noreferrer"><h4 className='section-heading'>C Shell</h4></a>
+        <a className='section-heading' href={C_SHELL_PDF_URL} target="_blank" rel="noreferrer"><h4 className='section-heading'>C Shell</h4></a>
 
         <h5 className='section-heading'>Pipe, Fork, Dup2, exec functions Makefile</h5>
         <ul className='section-list'>
@@ -188,7 +188,7 @@ function CLanguage(){
         <li>The shell prompts the user for a command, parses the command, and then attempts to execute the command</li>
         </ul>
 
-        <a className='section-heading' href={Calendar} target="_blank" rel="noreferrer"><h4 className='section-heading'>Calendar</h4></a>
+        <a className='section-heading' href={CALENDAR_PDF_URL} target="_blank" rel="noreferrer"><h4 className='section-heading'>Calendar</h4></a>
 
         <h5 className='section-heading'>Dynamic Memory Allocation, Function Pointers, Linked Lists, Makefile</h5>
         <ul className='section-list'>
@@ -197,7 +197,7 @@ function CLanguage(){
         <li>Calendar events can be sorted based on different criteria. Events can be associated with additional information. Different sorting and info are handled with function pointers</li>
         </ul>
 
-        <h4 className='section-heading'><a href={DocManager} target="_blank" rel="noreferrer">Document Manager</a> and <a href={UserInter} target="_blank" rel="noreferrer">User Interface</a></h4>
+        <h4 className='section-heading'><a href={DOCUMENT_MANAGER_PDF_URL} target="_blank" rel="noreferrer">Document Manager</a> and <a href={USER_INTERFACE_PDF_URL} target="_blank" rel="noreferrer">User Interface</a></h4>
 
         <h5 className='section-heading'>C Structures, Functions, String Manipulation, text parsing, File I/O, Command Line Arguments</h5>
         <ul className='section-list'>
@@ -205,7 +205,7 @@ function CLanguage(){
         <li>Wrote a text-based user interface to the document manager system, that allows users to load, save, and edit documents that have been created</li>
         </ul>
 
-        <a className='section-heading' href={GradesCalc} target="_blank" rel="noreferrer"><h4 className='section-heading'>Grades Calculator</h4></a>
+        <a className='section-heading' href={GRADES_CALCULATOR_PDF_URL} target="_blank" rel="noreferrer"><h4 className='section-heading'>Grades Calculator</h4></a>
 
         <h5 className='section-heading'>Functions, Arrays</h5>
         <ul className='section-list'>
@@ -240,7 +240,7 @@ function More(){
         <li>Demonstrated expertise in AWS by deploying the website using Amazon S3 for static content hosting</li>
         </ul>
 
-        <h4 className='section-heading'>Assembly Projects <a href={AssemP1} target="_blank" rel="noreferrer"> Project1</a> <a href={AssemP2} target="_blank" rel="noreferrer"> Project2</a> </h4> 
+        <h4 className='section-heading'>Assembly Projects <a href={ASSEMBLY_PROJECT_1_PDF_URL} target="_blank" rel="noreferrer"> Project1</a> <a href={ASSEMBLY_PROJECT_2_PDF_URL} target="_blank" rel="noreferrer"> Project2</a> </h4> 
 
         <h5 className='section-heading'>AVR Assembly, Converted C code fragments into AVR Assembly code with the same functionality</h5>
         <ul className='section-list'>

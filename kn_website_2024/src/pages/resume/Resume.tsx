@@ -1,15 +1,14 @@
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
-import resumePdf from '../../Files/kResume.pdf';
-
-import CShell from '../../Project PDFS/C/project6.pdf';
+const RESUME_PDF_URL = '/Files/kResume.pdf';
+const C_SHELL_PDF_URL = '/Project%20PDFS/C/project6.pdf';
 
 export default function Home(){
     return (
     <div>
         <ResumeHead />
         <hr/>
-        <Button><a href={resumePdf} target="_blank" rel="noreferrer"><h3>Resume PDF</h3></a></Button>
+        <Button><a href={RESUME_PDF_URL} target="_blank" rel="noreferrer"><h3>Resume PDF</h3></a></Button>
         <hr/>
         <ResumeBody />
     </div>
@@ -144,7 +143,7 @@ function Projects(){
     <li>Demonstrated expertise in AWS by deploying the website using Amazon S3 for static content hosting</li>
     </ul>
 
-    <a className='section-heading' href={CShell} target="_blank" rel="noreferrer"><h4 className='section-heading'>C Shell</h4></a>
+    <a className='section-heading' href={C_SHELL_PDF_URL} target="_blank" rel="noreferrer"><h4 className='section-heading'>C Shell</h4></a>
 
     <h5 className='section-heading'>C, Pipe, Fork, Dup2, exec functions Makefile</h5>
     <ul className='section-list'>
