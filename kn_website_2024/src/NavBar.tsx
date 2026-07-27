@@ -12,11 +12,11 @@ type NavbarProps = {
 
 export default function Navbar({ themeMode, onThemeModeChange }: NavbarProps) {
     return <nav className="nav">
-        <Button className="nav-button"><Link to='/' className="site-title">Kene Nwankwo</Link></Button>
+        <Button component={Link} to='/' className="nav-button site-title">Kene Nwankwo</Button>
         <ul>
             <CustomLink to="/home">Home</CustomLink>
-            <CustomLink to="/Resume">Resume</CustomLink>
-            <CustomLink to="/SoftwareProjects">Software Projects</CustomLink>
+            <CustomLink to="/resume">Resume</CustomLink>
+            <CustomLink to="/software-projects">Software Projects</CustomLink>
         </ul>
         <label className="theme-toggle" aria-label="Toggle dark mode">
             <input
@@ -46,8 +46,13 @@ function CustomLink({ to, children, ...props }: CustomLinkProps) {
     const resolvedPath = useResolvedPath(to)
     const isActive = useMatch({ path: resolvedPath.pathname , end: true})
     return(
-        <Button className={isActive ? "nav-button active" : "nav-button"}>
-            <Link to={to} {...props}>{children}</Link>
+        <Button
+            component={Link}
+            to={to}
+            className={isActive ? "nav-button active" : "nav-button"}
+            {...props}
+        >
+            {children}
         </Button>
     )
 }

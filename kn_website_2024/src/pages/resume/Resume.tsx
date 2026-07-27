@@ -1,4 +1,5 @@
 import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 import resumePdf from '../../Files/kResume.pdf';
 
 import CShell from '../../Project PDFS/C/project6.pdf';
@@ -109,7 +110,7 @@ function HighLighted(){
 function Projects(){
   return (
     <>
-    <h3 className='section-name'><a href="./SoftwareProjects">Projects</a></h3>
+    <h3 className='section-name'><Link to="/software-projects">Projects</Link></h3>
 
     <h4 className='section-heading'>Online Multiplayer Minesweeper</h4>
 
@@ -152,8 +153,7 @@ function Projects(){
     <li>The shell prompts the user for a command, parses the command, and then attempts to execute the command</li>
     </ul>
     
-    <h5><a href="./SoftwareProjects">More Projects</a></h5>
-    {/* <h5><CustomLink to="/SoftwareProjects">More Projects</CustomLink></h5> */}
+    <h5><Link to="/software-projects">More Projects</Link></h5>
     </>
   )
 }
@@ -203,7 +203,7 @@ function EmploymentExperience(){
       <li>Responded to inquiries in a timely and professional manner as an account representative</li>
     </ul>
 
-    <a className='section-heading' href="./Wikler"><h4 className='section-heading'>Wikler Case Competition - College Park, MD</h4></a>
+    <Link className='section-heading' to="/wikler"><h4 className='section-heading'>Wikler Case Competition - College Park, MD</h4></Link>
     <h5 className='section-heading'>Team Leader - April 2021</h5>
     <ul className='section-list'>
       <li>Determined investment recommendation via discounted cash flows analysis of project value</li>
@@ -212,7 +212,7 @@ function EmploymentExperience(){
       <li>Presented and defended my position to an expert panel using supporting quantitative, qualitative, and analytical considerations</li>
     </ul>
 
-    <a className='section-heading' href="./IB_Lab"><h4 className='section-heading'>International Business Agility Lab - College Park, MD</h4></a>
+    <Link className='section-heading' to="/ib-lab"><h4 className='section-heading'>International Business Agility Lab - College Park, MD</h4></Link>
     <h5 className='section-heading'>Team Member - April 2021</h5>
     <ul className='section-list'>
       <li>Developed a business model to encompass services, monetization strategy, and implementation plan as acting consultant</li>
@@ -264,7 +264,7 @@ function ActivitiesAffiliations(){
         <li>Learned how diversity is inherently a part of the university atmosphere and how to value self and other perspectives</li>
       </ul>
     
-    <a className='section-heading' href="./FIRE"><h4 className='section-heading'>FIRE-First-Year Innovation & Research Experience - College Park, MD</h4></a>
+    <Link className='section-heading' to="/fire"><h4 className='section-heading'>FIRE-First-Year Innovation & Research Experience - College Park, MD</h4></Link>
     <h5 className='section-heading'>Student Researcher - August 2018 – December 2019</h5>
       <ul className='section-list'>
         <li>Co-authored and presented an academic paper on technological advances regarding transforming job markets </li>

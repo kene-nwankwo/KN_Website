@@ -28,13 +28,13 @@ function App() {
       <div className="container site-content">
         <Routes >
           <Route path="/" element={<Home />} />
-          <Route path="/Home" element={<Home />} />
-          <Route path="/Resume" element={<Resume />} />
-          <Route path="/SoftwareProjects" element={<SoftwareProjects />} />
-          <Route path="/Wikler" element={<Wikler />} />
-          <Route path="/FIRE" element={<FIRE />} />
-          <Route path="/IB_Lab" element={<IBLab />} />
-          <Route path="/trainweatherpage" element={<TrainWeatherPage />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/resume" element={<Resume />} />
+          <Route path="/software-projects" element={<SoftwareProjects />} />
+          <Route path="/wikler" element={<Wikler />} />
+          <Route path="/fire" element={<FIRE />} />
+          <Route path="/ib-lab" element={<IBLab />} />
+          <Route path="/train-weather" element={<TrainWeatherPage />} />
           <Route path="*" element={<Error />} />
         </Routes>
         </div>
