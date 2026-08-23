@@ -67,9 +67,10 @@ async function fetchDeparturesAtTime(
   origin: string,
   destination: string,
   departureTimeSec: number,
+  signal?: AbortSignal,
 ): Promise<Departure[]> {
   const url = buildDeparturesUrl(backendUrl, origin, destination, departureTimeSec);
-  const response = await fetch(url);
+  const response = await fetch(url, { signal });
 
   if (!response.ok) {
     throw new Error(`Train API request failed with status ${response.status}`);
@@ -82,6 +83,7 @@ async function fetchDeparturesAtTime(
 
 export async function fetchDeparturesWithinWindow(
   route: TrainRoute,
+  signal?: AbortSignal,
 ): Promise<Departure[]> {
   if (TRAIN_CONFIG.useTestData && process.env.NODE_ENV === "development") {
     return deduplicateDepartures(getFixtureDepartures(route.fixture));
@@ -99,6 +101,7 @@ export async function fetchDeparturesWithinWindow(
       route.origin,
       route.destination,
       searchTimeSec,
+      signal,
     );
 
     if (newDepartures.length === 0) {

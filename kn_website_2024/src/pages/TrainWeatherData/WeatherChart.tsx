@@ -1,19 +1,57 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchWeatherData, MinuteForecast } from "./weatherApi";
 import { LineChart } from "@mui/x-charts/LineChart";
 
 export default function MinutelyForecast() {
   const [data, setData] = useState<MinuteForecast[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [retryCount, setRetryCount] = useState(0);
 
   useEffect(() => {
-    const getData = async () => {
-      const weatherData = await fetchWeatherData();
-      setData(weatherData);
-    };
-    getData();
-  }, []);
+    const abortController = new AbortController();
+    setIsLoading(true);
+    setError(null);
 
-  if (data.length === 0) return <div><h2 className="text-xl font-bold mb-2">Next Hour (Minutely Forecast)</h2> No data available</div>;
+    const getData = async () => {
+      try {
+        const weatherData = await fetchWeatherData(abortController.signal);
+        setData(weatherData);
+      } catch (requestError) {
+        if (abortController.signal.aborted) {
+          return;
+        }
+
+        setData([]);
+        setError(requestError instanceof Error ? requestError.message : "Unable to load weather data.");
+      } finally {
+        if (!abortController.signal.aborted) {
+          setIsLoading(false);
+        }
+      }
+    };
+
+    getData();
+    return () => abortController.abort();
+  }, [retryCount]);
+
+  if (isLoading) return <div><h2>Next Hour (Minutely Forecast)</h2><div role="status">Loading weather data...</div></div>;
+
+  if (error) {
+    return (
+      <div>
+        <h2>Next Hour (Minutely Forecast)</h2>
+        <div role="alert">
+          <p>Unable to load weather data: {error}</p>
+          <button type="button" onClick={() => setRetryCount((count) => count + 1)}>
+            Try again
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (data.length === 0) return <div><h2>Next Hour (Minutely Forecast)</h2> No forecast data available.</div>;
 
   const maxPrecip = Math.max(...data.map((d) => d.precipitation), 0);
   
@@ -90,9 +128,9 @@ export default function MinutelyForecast() {
       ];
 
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-bold mb-2">Next Hour (Minutely Forecast)</h2>
-      <p className="text-center mb-2">{precipitationMessage}</p>
+    <div>
+      <h2>Next Hour (Minutely Forecast)</h2>
+      <p>{precipitationMessage}</p>
       <div style={{ width: '100%', maxWidth: '800px', margin: '0 auto' }}>
         <LineChart
           xAxis={[{ 
