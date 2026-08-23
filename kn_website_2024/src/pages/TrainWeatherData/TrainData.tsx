@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import MuiTable from "./MuiTable";
-import { getBackendUrl, TRAIN_CONFIG } from "./config";
-import departures1 from "./data/testdepartures1.json";
-import departures2 from "./data/testdepartures2.json";
+import { fetchDeparturesWithinWindow } from "./trainApi";
+import type { Departure } from "./trainTypes";
 
 type Column<T> = {
   header: string;
@@ -11,45 +10,6 @@ type Column<T> = {
 type TrainDataProps = {
     origin: string;
     destination: string;
-};
-
-type Departure = {
-    departureTime: string;
-    departureTimeEpochSeconds: number;
-    arrivalTime: string;
-    line: string;
-};
-
-type TransitLine = {
-    name?: string;
-};
-
-type TransitDetails = {
-    line?: TransitLine;
-};
-
-type TransitStep = {
-    transit_details?: TransitDetails;
-};
-
-type RouteLeg = {
-    departure_time?: {
-        text?: string;
-        value?: number;
-    };
-    arrival_time?: {
-        text?: string;
-        value?: number;
-    };
-    steps?: TransitStep[];
-};
-
-type MapsRoute = {
-    legs?: RouteLeg[];
-};
-
-type MapsResponse = {
-    routes?: MapsRoute[];
 };
 
 const columns: Column<Departure>[] = [
@@ -62,56 +22,12 @@ export default function TrainData({ origin, destination }: TrainDataProps) {
     const [departures, setDepartures] = useState<Departure[]>([]);
 
     useEffect(() => {
-        const loadDeparturesWithinWindow = async () => {
-            const now = Math.floor(Date.now() / 1000);
-            let searchTimeSec = now;
-            const backendUrl = getBackendUrl(TRAIN_CONFIG.apiPath);
-
-            // Use test data in development
-            if (TRAIN_CONFIG.useTestData && process.env.NODE_ENV === 'development') {
-                if (origin === "Lovers Lane Station, Dallas, TX"){
-                    setDepartures(departures1);
-                    return;
-                } else {
-                    setDepartures(departures2);
-                    return;
-                }
-            }
-
-            const isWithinSearchWindow = (searchTimeSec: number, timeNowSec: number, windowMin: number) =>
-                searchTimeSec < timeNowSec + (windowMin * 60);
-
-            while (isWithinSearchWindow(searchTimeSec, now, TRAIN_CONFIG.searchWindowMinutes)) {
-
-                const url = `${backendUrl}?origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}&departureTime=${encodeURIComponent(searchTimeSec)}`;
-                
-                console.log("Fetching from URL:", url);
-
-                const response = await fetch(url);
-                const mapsResponse: MapsResponse = await response.json();            
-
-                if (mapsResponse.routes && mapsResponse.routes.length > 0) {
-                    const routeLegs = mapsResponse.routes[0].legs ?? [];
-                    const newDepartures: Departure[] = routeLegs.map((leg: RouteLeg) => ({
-                        departureTime: leg.departure_time?.text || "N/A",
-                        departureTimeEpochSeconds: leg.departure_time?.value || 0,
-                        arrivalTime: leg.arrival_time?.text || "N/A",
-                        line: leg.steps?.map((step: TransitStep) => step.transit_details?.line?.name).find((name: string | undefined) => name !== undefined) || "N/A",
-                    }));
-
-                    setDepartures(prev => [...prev, ...newDepartures]);
-
-                    const lastDeparture = newDepartures[newDepartures.length - 1];
-                    searchTimeSec = lastDeparture.departureTimeEpochSeconds + 60;
-                    console.log("Updated search time (epoch seconds):", searchTimeSec);
-                } else {
-                    break; // stop if no routes returned
-                }
-            }
-
+        const loadDepartures = async () => {
+            const loadedDepartures = await fetchDeparturesWithinWindow(origin, destination);
+            setDepartures(loadedDepartures);
         };
 
-        loadDeparturesWithinWindow();
+        loadDepartures();
     }, [origin, destination]);
 
     return (
