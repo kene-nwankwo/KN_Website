@@ -3,8 +3,12 @@ export type TrainRoute = {
   destination: string;
 };
 
+export type ApiEnvironment = "auto" | "local" | "prod";
+
 const PRODUCTION_BACKEND_URL = "https://demobackend-production-3f3f.up.railway.app";
 const LOCAL_BACKEND_URL = "http://localhost:8080";
+
+export const API_ENVIRONMENT: ApiEnvironment = "auto";
 
 export const TRAIN_CONFIG = {
   apiPath: "/mapsData",
@@ -32,7 +36,10 @@ export const WEATHER_CONFIG = {
 };
 
 export function getBackendUrl(apiPath: string): string {
-  const backendUrl = process.env.NODE_ENV === "development"
+  const environment = API_ENVIRONMENT === "auto"
+    ? process.env.NODE_ENV === "development" ? "local" : "prod"
+    : API_ENVIRONMENT;
+  const backendUrl = environment === "local"
     ? LOCAL_BACKEND_URL
     : PRODUCTION_BACKEND_URL;
 
