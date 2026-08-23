@@ -13,11 +13,11 @@ const getDepartureCellColor = (departure: Departure): string => {
     (departure.departureTimeEpochSeconds - currentTimeEpochSeconds) / 60;
 
   if (minutesUntilDeparture >= 8 && minutesUntilDeparture <= 12) {
-    return "lightGreen";
+    return "var(--color-highlight-strong)";
   }
 
   if (minutesUntilDeparture >= 6 && minutesUntilDeparture <= 16) {
-    return "#FFD580";
+    return "var(--color-highlight)";
   }
 
   return "inherit";

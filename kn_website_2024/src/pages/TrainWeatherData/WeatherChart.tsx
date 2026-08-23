@@ -154,6 +154,11 @@ export default function MinutelyForecast() {
             },
           ]}
           height={300}
+          sx={{
+            "& .MuiChartsAxis-tickLabel, & .MuiChartsAxis-label, & .MuiChartsLegend-label": {
+              fill: "var(--color-text)",
+            },
+          }}
         />
       </div>
     </div>

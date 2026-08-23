@@ -46,12 +46,19 @@
   overflow-x: auto;
 }
 
+.train-weather-chart svg text,
+.train-weather-chart .MuiChartsLegend-label,
+.train-weather-chart [class*="MuiChartsLegend"] {
+  color: var(--color-text);
+  fill: var(--color-text) !important;
+}
+
 .train-weather-status {
   padding: var(--space-2-5) 0;
 }
 
 .train-weather-status[role="alert"] {
-  color: #9b2c2c;
+  color: var(--color-error);
 }
 
 .train-weather-status button {
