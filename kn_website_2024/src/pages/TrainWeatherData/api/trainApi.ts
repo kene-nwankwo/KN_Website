@@ -1,8 +1,8 @@
-import departures1 from "./data/testdepartures1.json";
-import departures2 from "./data/testdepartures2.json";
-import { getBackendUrl, TRAIN_CONFIG } from "./config";
-import type { TrainRoute } from "./config";
-import type { Departure, MapsResponse, RouteLeg } from "./trainTypes";
+import departures1 from "../test-data/testdepartures1.json";
+import departures2 from "../test-data/testdepartures2.json";
+import { getBackendUrl, TRAIN_CONFIG } from "../config";
+import type { TrainRoute } from "../config";
+import type { Departure, MapsResponse, RouteLeg } from "../types/trainTypes";
 
 const fixtureDepartures: Record<TrainRoute["fixture"], Departure[]> = {
   departures1,

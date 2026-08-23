@@ -3,9 +3,9 @@ import {
   fetchDeparturesWithinWindow,
   getNextSearchTime,
   mapRouteLegToDeparture,
-} from "./trainApi";
-import type { TrainRoute } from "./config";
-import type { Departure } from "./trainTypes";
+} from "../api/trainApi";
+import type { TrainRoute } from "../config";
+import type { Departure } from "../types/trainTypes";
 
 const route: TrainRoute = {
   id: "test-route",

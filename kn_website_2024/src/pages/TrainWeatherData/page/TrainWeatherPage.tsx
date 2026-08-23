@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import { Button } from '@mui/material';
-import MinutelyForecast from './WeatherChart';
-import TrainData from './TrainData';
-import { TRAIN_CONFIG } from './config';
-import './styles/TrainWeather.css';
+import MinutelyForecast from '../components/WeatherChart';
+import TrainData from '../components/TrainData';
+import { TRAIN_CONFIG } from '../config';
+import '../styles/TrainWeather.css';
 
 export default function TrainWeatherPage() {
   const [refreshKey, setRefreshKey] = useState(0);

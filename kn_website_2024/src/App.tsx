@@ -8,7 +8,7 @@ import Wikler from './pages/wikler/Wikler';
 import FIRE from './pages/fire/FIRE';
 import IBLab from './pages/ib-lab/IB_Lab';
 import Error from './pages/error/Error';
-import TrainWeatherPage from './pages/TrainWeatherData/TrainWeatherPage';
+import TrainWeatherPage from './pages/TrainWeatherData/page/TrainWeatherPage';
 import type { ThemeMode } from './theme';
 
 function App() {

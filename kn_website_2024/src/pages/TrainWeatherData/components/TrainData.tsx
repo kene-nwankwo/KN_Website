@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import DataStateMessage from "./DataStateMessage";
 import DepartureTable from "./DepartureTable";
-import { fetchDeparturesWithinWindow } from "./trainApi";
-import type { TrainRoute } from "./config";
-import type { Departure } from "./trainTypes";
+import { fetchDeparturesWithinWindow } from "../api/trainApi";
+import type { TrainRoute } from "../config";
+import type { Departure } from "../types/trainTypes";
 
 type TrainDataProps = {
     route: TrainRoute;

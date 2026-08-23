@@ -1,5 +1,5 @@
-import TestWeatherJson from "./data/testWeatherData.json";
-import { getBackendUrl, WEATHER_CONFIG } from "./config";
+import TestWeatherJson from "../test-data/testWeatherData.json";
+import { getBackendUrl, WEATHER_CONFIG } from "../config";
 
 export type MinuteForecast = {
   dt: number;     // Unix timestamp

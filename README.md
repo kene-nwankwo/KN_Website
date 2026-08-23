@@ -41,6 +41,16 @@ The train-weather page is available at `/train-weather` and uses the following c
 
 `kn_website_2024/src/pages/TrainWeatherData/config.ts`
 
+The feature folder is organized by responsibility:
+
+- `page`: the routed train-weather page.
+- `components`: train, weather, table, and shared state components.
+- `api`: train and weather request logic.
+- `types`: train API response types.
+- `test-data`: local JSON fixtures.
+- `tests`: focused train and weather API tests.
+- `styles`: train-weather-specific CSS.
+
 - Set `API_ENVIRONMENT` to `"auto"`, `"local"`, or `"prod"` to select the backend URL.
 - Set `TRAIN_CONFIG.useTestData` and `WEATHER_CONFIG.useTestData` to `true` to use local fixture data during development.
 - Set those fixture flags to `false` to call the configured backend. The API endpoints are public client-side URLs; do not put secrets in this configuration.

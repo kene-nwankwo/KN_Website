@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import DataStateMessage from "./DataStateMessage";
-import { fetchWeatherData, MinuteForecast } from "./weatherApi";
+import { fetchWeatherData, MinuteForecast } from "../api/weatherApi";
 import { LineChart } from "@mui/x-charts/LineChart";
 
 type MinutelyForecastProps = {

@@ -1,4 +1,4 @@
-import { fetchWeatherData, parseWeatherResponse } from "./weatherApi";
+import { fetchWeatherData, parseWeatherResponse } from "../api/weatherApi";
 
 describe("weather API", () => {
   it("parses minutely forecast data", () => {

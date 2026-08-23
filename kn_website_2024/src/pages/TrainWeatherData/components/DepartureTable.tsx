@@ -1,5 +1,5 @@
 import MuiTable, { type Column } from "./MuiTable";
-import type { Departure } from "./trainTypes";
+import type { Departure } from "../types/trainTypes";
 
 const columns: Column<Departure>[] = [
   { header: "Departure", accessor: "departureTime" },
