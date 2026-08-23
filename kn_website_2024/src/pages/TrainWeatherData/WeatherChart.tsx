@@ -2,11 +2,16 @@ import { useEffect, useState } from "react";
 import { fetchWeatherData, MinuteForecast } from "./weatherApi";
 import { LineChart } from "@mui/x-charts/LineChart";
 
-export default function MinutelyForecast() {
+type MinutelyForecastProps = {
+  refreshKey: number;
+};
+
+export default function MinutelyForecast({ refreshKey }: MinutelyForecastProps) {
   const [data, setData] = useState<MinuteForecast[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [retryCount, setRetryCount] = useState(0);
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -17,6 +22,7 @@ export default function MinutelyForecast() {
       try {
         const weatherData = await fetchWeatherData(abortController.signal);
         setData(weatherData);
+        setLastUpdated(new Date());
       } catch (requestError) {
         if (abortController.signal.aborted) {
           return;
@@ -33,7 +39,7 @@ export default function MinutelyForecast() {
 
     getData();
     return () => abortController.abort();
-  }, [retryCount]);
+  }, [refreshKey, retryCount]);
 
   if (isLoading) return <div className="train-weather-forecast-content"><h2>Next Hour (Minutely Forecast)</h2><div className="train-weather-status" role="status">Loading weather data...</div></div>;
 
@@ -51,7 +57,7 @@ export default function MinutelyForecast() {
     );
   }
 
-  if (data.length === 0) return <div className="train-weather-forecast-content"><h2>Next Hour (Minutely Forecast)</h2><div className="train-weather-status">No forecast data available.</div></div>;
+  if (data.length === 0) return <div className="train-weather-forecast-content"><h2>Next Hour (Minutely Forecast)</h2><div className="train-weather-status">No forecast data available.</div>{lastUpdated && <p className="train-weather-last-updated">Last updated: {lastUpdated.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}</p>}</div>;
 
   const maxPrecip = Math.max(...data.map((d) => d.precipitation), 0);
   
@@ -161,6 +167,11 @@ export default function MinutelyForecast() {
           }}
         />
       </div>
+      {lastUpdated && (
+        <p className="train-weather-last-updated">
+          Last updated: {lastUpdated.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}
+        </p>
+      )}
     </div>
   );
 }

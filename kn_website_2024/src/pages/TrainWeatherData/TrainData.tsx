@@ -6,13 +6,15 @@ import type { Departure } from "./trainTypes";
 
 type TrainDataProps = {
     route: TrainRoute;
+    refreshKey: number;
 };
 
-export default function TrainData({ route }: TrainDataProps) {
+export default function TrainData({ route, refreshKey }: TrainDataProps) {
     const [departures, setDepartures] = useState<Departure[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [retryCount, setRetryCount] = useState(0);
+    const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
 
     useEffect(() => {
         const abortController = new AbortController();
@@ -26,6 +28,7 @@ export default function TrainData({ route }: TrainDataProps) {
                     abortController.signal,
                 );
                 setDepartures(loadedDepartures);
+                setLastUpdated(new Date());
             } catch (requestError) {
                 if (abortController.signal.aborted) {
                     return;
@@ -43,7 +46,7 @@ export default function TrainData({ route }: TrainDataProps) {
         loadDepartures();
 
         return () => abortController.abort();
-    }, [route, retryCount]);
+    }, [route, refreshKey, retryCount]);
 
     return (
         <div className="train-departure-section">
@@ -61,6 +64,11 @@ export default function TrainData({ route }: TrainDataProps) {
                 <div className="train-weather-status">No departures found.</div>
             ) : (
                 <DepartureTable departures={departures} />
+            )}
+            {lastUpdated && (
+                <p className="train-weather-last-updated">
+                    Last updated: {lastUpdated.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}
+                </p>
             )}
         </div>
     );
