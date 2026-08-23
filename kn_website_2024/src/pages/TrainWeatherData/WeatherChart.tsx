@@ -35,13 +35,13 @@ export default function MinutelyForecast() {
     return () => abortController.abort();
   }, [retryCount]);
 
-  if (isLoading) return <div><h2>Next Hour (Minutely Forecast)</h2><div role="status">Loading weather data...</div></div>;
+  if (isLoading) return <div className="train-weather-forecast-content"><h2>Next Hour (Minutely Forecast)</h2><div className="train-weather-status" role="status">Loading weather data...</div></div>;
 
   if (error) {
     return (
-      <div>
+      <div className="train-weather-forecast-content">
         <h2>Next Hour (Minutely Forecast)</h2>
-        <div role="alert">
+        <div className="train-weather-status" role="alert">
           <p>Unable to load weather data: {error}</p>
           <button type="button" onClick={() => setRetryCount((count) => count + 1)}>
             Try again
@@ -51,7 +51,7 @@ export default function MinutelyForecast() {
     );
   }
 
-  if (data.length === 0) return <div><h2>Next Hour (Minutely Forecast)</h2> No forecast data available.</div>;
+  if (data.length === 0) return <div className="train-weather-forecast-content"><h2>Next Hour (Minutely Forecast)</h2><div className="train-weather-status">No forecast data available.</div></div>;
 
   const maxPrecip = Math.max(...data.map((d) => d.precipitation), 0);
   
@@ -128,10 +128,10 @@ export default function MinutelyForecast() {
       ];
 
   return (
-    <div>
+    <div className="train-weather-forecast-content">
       <h2>Next Hour (Minutely Forecast)</h2>
-      <p>{precipitationMessage}</p>
-      <div style={{ width: '100%', maxWidth: '800px', margin: '0 auto' }}>
+      <p className="train-weather-forecast-summary">{precipitationMessage}</p>
+      <div className="train-weather-chart">
         <LineChart
           xAxis={[{ 
             data: xAxisData, 

@@ -56,19 +56,19 @@ export default function TrainData({ route }: TrainDataProps) {
     }, [route, retryCount]);
 
     return (
-        <div>
-            <h2>Train Departures: {route.origin} → {route.destination}</h2>
+        <div className="train-departure-section">
+            <h2 id={`${route.id}-heading`}>Train Departures: {route.origin} → {route.destination}</h2>
             {isLoading ? (
-                <div role="status">Loading departures...</div>
+                <div className="train-weather-status" role="status">Loading departures...</div>
             ) : error ? (
-                <div role="alert">
+                <div className="train-weather-status" role="alert">
                     <p>Unable to load departures: {error}</p>
                     <button type="button" onClick={() => setRetryCount((count) => count + 1)}>
                         Try again
                     </button>
                 </div>
             ) : departures.length === 0 ? (
-                <div>No departures found.</div>
+                <div className="train-weather-status">No departures found.</div>
             ) : (
                 <MuiTable title="Train Departures" columns={columns} data={departures} />
             )}

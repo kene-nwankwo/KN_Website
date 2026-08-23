@@ -1,23 +1,79 @@
+.train-weather-page {
+  width: 100%;
+}
+
+.train-weather-page > h1 {
+  margin: 0 0 var(--space-4);
+}
+
 .train-weather-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
 }
 
 .train-weather-item {
-  flex: 1 1 30%;
-  min-width: 280px;
+  min-width: 0;
+  padding: var(--space-3);
+  border: 1px solid var(--color-muted);
+  border-radius: 0.5rem;
+  background-color: var(--color-bg);
 }
 
-/* Stack on narrow displays (tablets and below) */
+.train-weather-item h2 {
+  margin-top: 0;
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+.train-weather-forecast {
+  grid-column: 1 / -1;
+}
+
+.train-weather-forecast-content {
+  width: 100%;
+}
+
+.train-weather-forecast-summary {
+  text-align: center;
+  margin: 0 0 var(--space-2-5);
+}
+
+.train-weather-chart {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow-x: auto;
+}
+
+.train-weather-status {
+  padding: var(--space-2-5) 0;
+}
+
+.train-weather-status[role="alert"] {
+  color: #9b2c2c;
+}
+
+.train-weather-status button {
+  padding: var(--space-1) var(--space-2-5);
+  border: 1px solid currentColor;
+  border-radius: 0.25rem;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.train-weather-status button:focus-visible {
+  outline: 2px solid var(--color-link-hover);
+  outline-offset: 2px;
+}
+
 @media (max-width: 768px) {
   .train-weather-container {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
-  
-  .train-weather-item {
-    width: 100%;
-    flex: 1 1 100%;
+
+  .train-weather-forecast {
+    grid-column: auto;
   }
 }
