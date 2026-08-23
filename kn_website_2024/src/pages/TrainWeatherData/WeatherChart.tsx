@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import DataStateMessage from "./DataStateMessage";
 import { fetchWeatherData, MinuteForecast } from "./weatherApi";
 import { LineChart } from "@mui/x-charts/LineChart";
 
@@ -47,17 +48,16 @@ export default function MinutelyForecast({ refreshKey }: MinutelyForecastProps) 
     return (
       <div className="train-weather-forecast-content">
         <h2>Next Hour (Minutely Forecast)</h2>
-        <div className="train-weather-status" role="alert">
-          <p>Unable to load weather data: {error}</p>
-          <button type="button" onClick={() => setRetryCount((count) => count + 1)}>
-            Try again
-          </button>
-        </div>
+        <DataStateMessage
+          type="error"
+          message="Weather forecast data is currently unavailable."
+          onRetry={() => setRetryCount((count) => count + 1)}
+        />
       </div>
     );
   }
 
-  if (data.length === 0) return <div className="train-weather-forecast-content"><h2>Next Hour (Minutely Forecast)</h2><div className="train-weather-status">No forecast data available.</div>{lastUpdated && <p className="train-weather-last-updated">Last updated: {lastUpdated.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}</p>}</div>;
+  if (data.length === 0) return <div className="train-weather-forecast-content"><h2>Next Hour (Minutely Forecast)</h2><DataStateMessage type="empty" message="No forecast data is available for the next hour." />{lastUpdated && <p className="train-weather-last-updated">Last updated: {lastUpdated.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}</p>}</div>;
 
   const maxPrecip = Math.max(...data.map((d) => d.precipitation), 0);
   

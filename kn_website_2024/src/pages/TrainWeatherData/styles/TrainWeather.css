@@ -2,10 +2,6 @@
   width: 100%;
 }
 
-.train-weather-page > h1 {
-  margin: 0 0 var(--space-4);
-}
-
 .train-weather-page-header {
   display: flex;
   align-items: center;
@@ -69,13 +65,17 @@
   padding: var(--space-2-5) 0;
 }
 
+.train-weather-status p {
+  margin: 0 0 var(--space-2-5);
+}
+
 .train-weather-last-updated {
   margin: var(--space-2-5) 0 0;
   color: var(--color-text-muted);
   font-size: 0.875rem;
 }
 
-.train-weather-status[role="alert"] {
+.train-weather-status-error {
   color: var(--color-error);
 }
 

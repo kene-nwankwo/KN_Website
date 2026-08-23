@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import DataStateMessage from "./DataStateMessage";
 import DepartureTable from "./DepartureTable";
 import { fetchDeparturesWithinWindow } from "./trainApi";
 import type { TrainRoute } from "./config";
@@ -54,14 +55,16 @@ export default function TrainData({ route, refreshKey }: TrainDataProps) {
             {isLoading ? (
                 <div className="train-weather-status" role="status">Loading departures...</div>
             ) : error ? (
-                <div className="train-weather-status" role="alert">
-                    <p>Unable to load departures: {error}</p>
-                    <button type="button" onClick={() => setRetryCount((count) => count + 1)}>
-                        Try again
-                    </button>
-                </div>
+                <DataStateMessage
+                    type="error"
+                    message="Train departure data is currently unavailable."
+                    onRetry={() => setRetryCount((count) => count + 1)}
+                />
             ) : departures.length === 0 ? (
-                <div className="train-weather-status">No departures found.</div>
+                <DataStateMessage
+                    type="empty"
+                    message="No departures are available in the next 45 minutes."
+                />
             ) : (
                 <DepartureTable departures={departures} />
             )}
