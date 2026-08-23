@@ -1,22 +1,12 @@
 import { useEffect, useState } from "react";
-import MuiTable from "./MuiTable";
+import DepartureTable from "./DepartureTable";
 import { fetchDeparturesWithinWindow } from "./trainApi";
 import type { TrainRoute } from "./config";
 import type { Departure } from "./trainTypes";
 
-type Column<T> = {
-  header: string;
-  accessor: keyof T;
-};
 type TrainDataProps = {
     route: TrainRoute;
 };
-
-const columns: Column<Departure>[] = [
-  { header: "Departure", accessor: "departureTime" },
-  { header: "Arrival", accessor: "arrivalTime" },
-  { header: "Line", accessor: "line" },
-];
 
 export default function TrainData({ route }: TrainDataProps) {
     const [departures, setDepartures] = useState<Departure[]>([]);
@@ -70,7 +60,7 @@ export default function TrainData({ route }: TrainDataProps) {
             ) : departures.length === 0 ? (
                 <div className="train-weather-status">No departures found.</div>
             ) : (
-                <MuiTable title="Train Departures" columns={columns} data={departures} />
+                <DepartureTable departures={departures} />
             )}
         </div>
     );

@@ -1,10 +1,10 @@
-import React from "react";
+import type { Key } from "react";
 import {
   Table, TableBody, TableCell, TableContainer,
   TableHead, TableRow, Paper, Typography
 } from "@mui/material";
 
-type Column<T> = {
+export type Column<T> = {
   header: string;
   accessor: keyof T;
 };
@@ -13,23 +13,16 @@ type MuiTableProps<T> = {
   title?: string;
   columns: Column<T>[];
   data: T[];
-};
-
-const getCellColor = <T extends object>(row: T, lowMinutes: number, highMinutes: number, inputColor: string, currentColor: string): string => {
-  const departureTimeEpochSeconds = Number(row['departureTimeEpochSeconds' as keyof T]);
-  const currentTimeEpochSeconds = Math.floor(Date.now() / 1000);
-  
-  if (departureTimeEpochSeconds >= (currentTimeEpochSeconds + (60 * lowMinutes)) && 
-      departureTimeEpochSeconds <= (currentTimeEpochSeconds + (60 * highMinutes))) {
-    return inputColor;
-  }
-  return currentColor;
+  getRowKey: (row: T) => Key;
+  getCellBackgroundColor?: (row: T) => string;
 };
 
 export default function MuiTable<T extends object>({
   title,
   columns,
-  data
+  data,
+  getRowKey,
+  getCellBackgroundColor,
 }: MuiTableProps<T>) {
   return (
     <TableContainer component={Paper} sx={{ borderRadius: 2, boxShadow: 5 }}>
@@ -63,18 +56,16 @@ export default function MuiTable<T extends object>({
               </TableCell>
             </TableRow>
           ) : (
-            data.map((row, i) => (
-              <TableRow key={i} hover>
-                {columns.map(col => {
-                  let cellColor = "inherit";
-                  cellColor = getCellColor(row, 6, 16, "#FFD580", cellColor);
-                  cellColor = getCellColor(row, 8, 12, "lightGreen", cellColor);
-                  return (
-                    <TableCell key={String(col.accessor)} sx={{ backgroundColor: cellColor }}>
+            data.map((row) => (
+              <TableRow key={getRowKey(row)} hover>
+                {columns.map(col => (
+                    <TableCell
+                      key={String(col.accessor)}
+                      sx={{ backgroundColor: getCellBackgroundColor?.(row) ?? "inherit" }}
+                    >
                       {String(row[col.accessor])}
                     </TableCell>
-                  );
-                })}
+                ))}
               </TableRow>
             ))
           )}
