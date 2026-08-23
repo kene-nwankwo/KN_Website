@@ -6,6 +6,10 @@ export type MinuteForecast = {
   precipitation: number; // mm of rain/snow expected
 };
 
+export function parseWeatherResponse(response: { minutely?: MinuteForecast[] }): MinuteForecast[] {
+  return response.minutely ?? [];
+}
+
 export async function fetchWeatherData(signal?: AbortSignal): Promise<MinuteForecast[]> {
   if (WEATHER_CONFIG.useTestData && process.env.NODE_ENV === 'development') {
     return TestWeatherJson.minutely || [];
@@ -20,5 +24,5 @@ export async function fetchWeatherData(signal?: AbortSignal): Promise<MinuteFore
   }
 
   const json = await response.json();
-  return json.minutely || [];
+  return parseWeatherResponse(json);
 }

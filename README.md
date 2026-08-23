@@ -35,6 +35,24 @@ Run these from [kn_website_2024](kn_website_2024):
 - `npm test`: run tests
 - `npm run deploy`: build and publish to GitHub Pages (`gh-pages` branch)
 
+## Train Weather
+
+The train-weather page is available at `/train-weather` and uses the following configuration file:
+
+`kn_website_2024/src/pages/TrainWeatherData/config.ts`
+
+- Set `API_ENVIRONMENT` to `"auto"`, `"local"`, or `"prod"` to select the backend URL.
+- Set `TRAIN_CONFIG.useTestData` and `WEATHER_CONFIG.useTestData` to `true` to use local fixture data during development.
+- Set those fixture flags to `false` to call the configured backend. The API endpoints are public client-side URLs; do not put secrets in this configuration.
+- The train endpoint is `/mapsData` and the weather endpoint is `/weatherData`.
+- Weather coordinates are for Dallas, Texas, and departure times are supplied by the transit backend.
+
+Run the focused train-weather tests with:
+
+```bash
+npm test -- --watchAll=false --runInBand src/pages/TrainWeatherData/trainApi.test.ts src/pages/TrainWeatherData/weatherApi.test.ts
+```
+
 ## Asset Policy
 Heavy static files are served from the `public` folder so they are not bundled into JavaScript.
 
