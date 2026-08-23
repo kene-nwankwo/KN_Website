@@ -1,23 +1,50 @@
 import departures1 from "./data/testdepartures1.json";
 import departures2 from "./data/testdepartures2.json";
 import { getBackendUrl, TRAIN_CONFIG } from "./config";
+import type { TrainRoute } from "./config";
 import type { Departure, MapsResponse, RouteLeg } from "./trainTypes";
 
-const LOVERS_LANE_STATION = "Lovers Lane Station, Dallas, TX";
+const fixtureDepartures: Record<TrainRoute["fixture"], Departure[]> = {
+  departures1,
+  departures2,
+};
 
-function getFixtureDepartures(origin: string): Departure[] {
-  return origin === LOVERS_LANE_STATION ? departures1 : departures2;
+function getFixtureDepartures(fixture: TrainRoute["fixture"]): Departure[] {
+  return fixtureDepartures[fixture];
 }
 
 export function mapRouteLegToDeparture(leg: RouteLeg): Departure {
   return {
-    departureTime: leg.departure_time?.text || "N/A",
-    departureTimeEpochSeconds: leg.departure_time?.value || 0,
-    arrivalTime: leg.arrival_time?.text || "N/A",
+    departureTime: leg.departure_time?.text ?? "N/A",
+    departureTimeEpochSeconds: leg.departure_time?.value ?? 0,
+    arrivalTime: leg.arrival_time?.text ?? "N/A",
     line: leg.steps
       ?.map((step) => step.transit_details?.line?.name)
-      .find((name): name is string => name !== undefined) || "N/A",
+      .find((name): name is string => name !== undefined) ?? "N/A",
   };
+}
+
+export function getNextSearchTime(
+  searchTimeSec: number,
+  departures: Departure[],
+): number | null {
+  const lastDeparture = departures[departures.length - 1];
+  if (!lastDeparture || lastDeparture.departureTimeEpochSeconds <= searchTimeSec) {
+    return null;
+  }
+
+  return lastDeparture.departureTimeEpochSeconds + 60;
+}
+
+export function deduplicateDepartures(departures: Departure[]): Departure[] {
+  const uniqueDepartures = new Map<string, Departure>();
+
+  departures.forEach((departure) => {
+    const key = `${departure.departureTimeEpochSeconds}-${departure.line}`;
+    uniqueDepartures.set(key, departure);
+  });
+
+  return Array.from(uniqueDepartures.values());
 }
 
 function buildDeparturesUrl(
@@ -54,11 +81,10 @@ async function fetchDeparturesAtTime(
 }
 
 export async function fetchDeparturesWithinWindow(
-  origin: string,
-  destination: string,
+  route: TrainRoute,
 ): Promise<Departure[]> {
   if (TRAIN_CONFIG.useTestData && process.env.NODE_ENV === "development") {
-    return getFixtureDepartures(origin);
+    return deduplicateDepartures(getFixtureDepartures(route.fixture));
   }
 
   const nowSec = Math.floor(Date.now() / 1000);
@@ -70,8 +96,8 @@ export async function fetchDeparturesWithinWindow(
   while (searchTimeSec < windowEndSec) {
     const newDepartures = await fetchDeparturesAtTime(
       backendUrl,
-      origin,
-      destination,
+      route.origin,
+      route.destination,
       searchTimeSec,
     );
 
@@ -81,13 +107,13 @@ export async function fetchDeparturesWithinWindow(
 
     departures.push(...newDepartures);
 
-    const lastDeparture = newDepartures[newDepartures.length - 1];
-    if (lastDeparture.departureTimeEpochSeconds <= searchTimeSec) {
+    const nextSearchTimeSec = getNextSearchTime(searchTimeSec, newDepartures);
+    if (nextSearchTimeSec === null) {
       break;
     }
 
-    searchTimeSec = lastDeparture.departureTimeEpochSeconds + 60;
+    searchTimeSec = nextSearchTimeSec;
   }
 
-  return departures;
+  return deduplicateDepartures(departures);
 }

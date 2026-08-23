@@ -1,6 +1,8 @@
 export type TrainRoute = {
+  id: string;
   origin: string;
   destination: string;
+  fixture: "departures1" | "departures2";
 };
 
 export type ApiEnvironment = "auto" | "local" | "prod";
@@ -14,12 +16,16 @@ export const TRAIN_CONFIG = {
   apiPath: "/mapsData",
   routes: [
     {
+      id: "lovers-lane-to-pearl-arts-district",
       origin: "Lovers Lane Station, Dallas, TX",
       destination: "Pearl/Arts District Station, Dallas, TX",
+      fixture: "departures1",
     },
     {
+      id: "pearl-arts-district-to-lovers-lane",
       origin: "Pearl/Arts District Station, Dallas, TX",
       destination: "Lovers Lane Station, Dallas, TX",
+      fixture: "departures2",
     },
   ] satisfies TrainRoute[],
   searchWindowMinutes: 45,

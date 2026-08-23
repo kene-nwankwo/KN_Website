@@ -7,8 +7,8 @@ export default function TrainWeatherPage() {
   return (<div>
     <div className="train-weather-container">
       {TRAIN_CONFIG.routes.map((route) => (
-        <div className="train-weather-item" key={`${route.origin}-${route.destination}`}>
-          <TrainData origin={route.origin} destination={route.destination} />
+        <div className="train-weather-item" key={route.id}>
+          <TrainData route={route} />
         </div>
       ))}
       <div className="train-weather-item"> <MinutelyForecast /></div>

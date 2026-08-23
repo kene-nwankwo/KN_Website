@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import MuiTable from "./MuiTable";
 import { fetchDeparturesWithinWindow } from "./trainApi";
+import type { TrainRoute } from "./config";
 import type { Departure } from "./trainTypes";
 
 type Column<T> = {
@@ -8,8 +9,7 @@ type Column<T> = {
   accessor: keyof T;
 };
 type TrainDataProps = {
-    origin: string;
-    destination: string;
+    route: TrainRoute;
 };
 
 const columns: Column<Departure>[] = [
@@ -18,21 +18,21 @@ const columns: Column<Departure>[] = [
   { header: "Line", accessor: "line" },
 ];
 
-export default function TrainData({ origin, destination }: TrainDataProps) {
+export default function TrainData({ route }: TrainDataProps) {
     const [departures, setDepartures] = useState<Departure[]>([]);
 
     useEffect(() => {
         const loadDepartures = async () => {
-            const loadedDepartures = await fetchDeparturesWithinWindow(origin, destination);
+            const loadedDepartures = await fetchDeparturesWithinWindow(route);
             setDepartures(loadedDepartures);
         };
 
         loadDepartures();
-    }, [origin, destination]);
+    }, [route]);
 
     return (
         <div>
-            <h2>Train Departures: {origin} → {destination}</h2>
+            <h2>Train Departures: {route.origin} → {route.destination}</h2>
             {departures.length === 0 ? (
                 <div>No departures found.</div>
             ) : (
