@@ -1,4 +1,5 @@
 import TestWeatherJson from "./data/testWeatherData.json";
+import { getBackendUrl, WEATHER_CONFIG } from "./config";
 
 export type MinuteForecast = {
   dt: number;     // Unix timestamp
@@ -6,24 +7,12 @@ export type MinuteForecast = {
 };
 
 export async function fetchWeatherData(): Promise<MinuteForecast[]> {
-  const lat = 32.7767; // Dallas
-  const lon = -96.7970;
-  
-  let backEndURL = "https://demobackend-production-3f3f.up.railway.app/weatherData";
-  
-  // Determine backEndURL based on environment
-  backEndURL = process.env.NODE_ENV === 'development'
-    ? "http://localhost:8080/weatherData"
-    : backEndURL;
-  
-  // Use test data in development
-  const useTestData = false;
-  
-  if (useTestData && process.env.NODE_ENV === 'development') {
+  if (WEATHER_CONFIG.useTestData && process.env.NODE_ENV === 'development') {
     return TestWeatherJson.minutely || [];
   }
-  
-  const url = `${backEndURL}?latitude=${lat}&longitude=${lon}`;
+
+  const { latitude, longitude } = WEATHER_CONFIG.coordinates;
+  const url = `${getBackendUrl(WEATHER_CONFIG.apiPath)}?latitude=${latitude}&longitude=${longitude}`;
 
   try {
     const response = await fetch(url);

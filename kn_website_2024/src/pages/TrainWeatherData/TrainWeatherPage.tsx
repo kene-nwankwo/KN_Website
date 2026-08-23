@@ -1,12 +1,16 @@
 import MinutelyForecast from './WeatherChart';
 import TrainData from './TrainData';
+import { TRAIN_CONFIG } from './config';
 import './styles/TrainWeather.css';
 
 export default function TrainWeatherPage() {
   return (<div>
     <div className="train-weather-container">
-      <div className="train-weather-item"><TrainData origin="Lovers Lane Station, Dallas, TX" destination="Pearl/Arts District Station, Dallas, TX" /></div>
-      <div className="train-weather-item"><TrainData origin="Pearl/Arts District Station, Dallas, TX" destination="Lovers Lane Station, Dallas, TX" /></div>
+      {TRAIN_CONFIG.routes.map((route) => (
+        <div className="train-weather-item" key={`${route.origin}-${route.destination}`}>
+          <TrainData origin={route.origin} destination={route.destination} />
+        </div>
+      ))}
       <div className="train-weather-item"> <MinutelyForecast /></div>
     </div>
 

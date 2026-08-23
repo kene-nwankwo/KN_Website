@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MuiTable from "./MuiTable";
+import { getBackendUrl, TRAIN_CONFIG } from "./config";
 import departures1 from "./data/testdepartures1.json";
 import departures2 from "./data/testdepartures2.json";
 
@@ -11,10 +12,6 @@ type TrainDataProps = {
     origin: string;
     destination: string;
 };
-
-// Testing Settings
-const PRODUCTION_BACKEND_URL = "https://demobackend-production-3f3f.up.railway.app/mapsData";
-const useTestData = false;
 
 type Departure = {
     departureTime: string;
@@ -68,13 +65,10 @@ export default function TrainData({ origin, destination }: TrainDataProps) {
         const loadDeparturesWithinWindow = async () => {
             const now = Math.floor(Date.now() / 1000);
             let searchTimeSec = now;
-            const searchWindowMinutes = 45;
-            const backendUrl = process.env.NODE_ENV === 'development'
-                ? "http://localhost:8080/mapsData"
-                : PRODUCTION_BACKEND_URL;
+            const backendUrl = getBackendUrl(TRAIN_CONFIG.apiPath);
 
             // Use test data in development
-            if (useTestData && process.env.NODE_ENV === 'development') {
+            if (TRAIN_CONFIG.useTestData && process.env.NODE_ENV === 'development') {
                 if (origin === "Lovers Lane Station, Dallas, TX"){
                     setDepartures(departures1);
                     return;
@@ -87,7 +81,7 @@ export default function TrainData({ origin, destination }: TrainDataProps) {
             const isWithinSearchWindow = (searchTimeSec: number, timeNowSec: number, windowMin: number) =>
                 searchTimeSec < timeNowSec + (windowMin * 60);
 
-            while (isWithinSearchWindow(searchTimeSec, now, searchWindowMinutes)) {
+            while (isWithinSearchWindow(searchTimeSec, now, TRAIN_CONFIG.searchWindowMinutes)) {
 
                 const url = `${backendUrl}?origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}&departureTime=${encodeURIComponent(searchTimeSec)}`;
                 
